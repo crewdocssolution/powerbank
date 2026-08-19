@@ -228,7 +228,7 @@
 
     /* Order form */
     .order-form {
-      max-width: 480px;
+      max-width: 520px;
       margin: 0 auto;
       background: var(--card);
       border: 1px solid var(--border);
@@ -275,7 +275,57 @@
       margin-top: 8px;
     }
 
+    .radio-group {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .radio-option {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 14px;
+      background: #0D0D0F;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .radio-option:hover { border-color: rgba(197,168,128,0.4); }
+    .radio-option input {
+      width: 16px; height: 16px; accent-color: var(--accent);
+      flex-shrink: 0;
+    }
+    .radio-option span { font-size: 14px; color: var(--text); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+    .form-terms {
+      margin-top: 8px;
+      padding: 14px 16px;
+      background: rgba(197,168,128,0.08);
+      border: 1px solid rgba(197,168,128,0.2);
+      border-radius: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .form-terms strong { color: var(--accent); font-weight: 600; }
+    .ac-wrap { position: relative; }
+    .ac-list {
+      position: absolute; left: 0; right: 0; top: 100%;
+      background: #0D0D0F; border: 1px solid var(--border);
+      border-radius: 10px; max-height: 220px; overflow-y: auto;
+      z-index: 20; display: none; margin-top: 4px;
+    }
+    .ac-list.open { display: block; }
+    .ac-item {
+      padding: 10px 14px; font-size: 14px; cursor: pointer;
+      border-bottom: 1px solid var(--border);
+    }
+    .ac-item:last-child { border-bottom: none; }
+    .ac-item:hover, .ac-item.active { background: rgba(197,168,128,0.12); color: var(--accent); }
+
+    .delivery-extra { display: none; }
+    .delivery-extra.active { display: block; }
+
     /* Contacts */
+
     .contacts-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 16px; max-width: 700px; margin: 0 auto;
@@ -774,13 +824,106 @@
               <option value="Hoco J86B 60 000 mAh — 2490 грн" data-id="j86b">Hoco J86B 60 000 mAh — 2 490 ₴</option>
             </select>
           </div>
+
+          <div class="form-group">
+            <label>
+              <span data-lang="uk" class="active">Спосіб оплати *</span>
+              <span data-lang="ru">Способ оплаты *</span>
+            </label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="payment" value="На рахунок" required checked>
+                <span data-lang="uk" class="active">На рахунок (переказ)</span>
+                <span data-lang="ru">На счёт (перевод)</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="payment" value="Накладений платіж">
+                <span data-lang="uk" class="active">Накладений платіж</span>
+                <span data-lang="ru">Наложенный платёж</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <span data-lang="uk" class="active">Доставка *</span>
+              <span data-lang="ru">Доставка *</span>
+            </label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="delivery" value="Нова Пошта" required checked onchange="toggleDelivery()">
+                <span>Нова Пошта</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="delivery" value="Укрпошта" onchange="toggleDelivery()">
+                <span>Укрпошта</span>
+              </label>
+            </div>
+          </div>
+
+          <div id="npExtra" class="delivery-extra active">
+            <div class="form-group">
+              <label>
+                <span data-lang="uk" class="active">Тип доставки НП</span>
+                <span data-lang="ru">Тип доставки НП</span>
+              </label>
+              <select id="npType" name="npType">
+                <option value="Відділення">Відділення</option>
+                <option value="Поштомат">Поштомат</option>
+                <option value="Адресна доставка">Адресна доставка</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>
+                <span data-lang="uk" class="active">Місто *</span>
+                <span data-lang="ru">Город *</span>
+              </label>
+              <div class="ac-wrap">
+                <input type="text" id="orderCity" name="city" required placeholder="Почніть вводити місто..." autocomplete="off">
+                <div class="ac-list" id="cityList"></div>
+              </div>
+              <input type="hidden" id="cityRef" value="">
+            </div>
+            <div class="form-group" id="branchGroup">
+              <label>
+                <span data-lang="uk" class="active">Відділення / поштомат</span>
+                <span data-lang="ru">Отделение / почтомат</span>
+              </label>
+              <div class="ac-wrap">
+                <input type="text" id="orderBranch" name="branch" placeholder="Оберіть або введіть..." autocomplete="off">
+                <div class="ac-list" id="branchList"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" id="addressGroup" style="display:none">
+            <label>
+              <span data-lang="uk" class="active">Адреса доставки</span>
+              <span data-lang="ru">Адрес доставки</span>
+            </label>
+            <input type="text" id="orderAddress" name="address" placeholder="вул. Хрещатик, 1, кв. 5">
+          </div>
+
           <div class="form-group">
             <label>
               <span data-lang="uk" class="active">Коментар</span>
               <span data-lang="ru">Комментарий</span>
             </label>
-            <textarea id="orderComment" name="comment" placeholder="Місто, кількість, побажання..."></textarea>
+            <textarea id="orderComment" name="comment" placeholder="Побажання до замовлення..."></textarea>
           </div>
+
+          <div class="form-terms">
+            <span data-lang="uk" class="active">
+              <strong>Умови:</strong> замовлення з накладеним платежем відправляються лише після мінімальної передоплати (вартість доставки або частина суми). Доставка Новою Поштою або Укрпоштою по всій Україні.
+            </span>
+            <span data-lang="ru">
+              <strong>Условия:</strong> заказы с наложенным платежом отправляются только после минимальной предоплаты (стоимость доставки или часть суммы). Доставка Новой Почтой или Укрпочтой по всей Украине.
+            </span>
+          </div>
+
           <button type="submit" class="btn btn-primary form-submit">
             <span data-lang="uk" class="active">Надіслати в Telegram</span>
             <span data-lang="ru">Отправить в Telegram</span>
@@ -879,6 +1022,134 @@
     const saved = localStorage.getItem('lang') || 'uk';
     setLang(saved);
 
+    // ===== Nova Poshta через Cloudflare Worker (ключ тільки на сервері) =====
+    // Після деплою воркера встав сюди його URL:
+    const NP_PROXY_URL = 'https://np-proxy.YOUR_SUBDOMAIN.workers.dev';
+
+    async function npRequest(modelName, calledMethod, methodProperties) {
+      const res = await fetch(NP_PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ modelName, calledMethod, methodProperties })
+      });
+      return res.json();
+    }
+
+    let cityTimer = null;
+    let selectedCityRef = '';
+    let warehousesCache = [];
+
+    function setupAutocomplete(inputId, listId, onSelect) {
+      const input = document.getElementById(inputId);
+      const list = document.getElementById(listId);
+      if (!input || !list) return;
+
+      input.addEventListener('blur', () => setTimeout(() => list.classList.remove('open'), 200));
+    }
+
+    function renderList(listEl, items, onPick) {
+      listEl.innerHTML = '';
+      if (!items.length) {
+        listEl.classList.remove('open');
+        return;
+      }
+      items.forEach((item) => {
+        const div = document.createElement('div');
+        div.className = 'ac-item';
+        div.textContent = item.label;
+        div.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          onPick(item);
+          listEl.classList.remove('open');
+        });
+        listEl.appendChild(div);
+      });
+      listEl.classList.add('open');
+    }
+
+    document.getElementById('orderCity')?.addEventListener('input', function () {
+      const q = this.value.trim();
+      selectedCityRef = '';
+      document.getElementById('cityRef').value = '';
+      warehousesCache = [];
+      document.getElementById('orderBranch').value = '';
+      clearTimeout(cityTimer);
+      if (q.length < 2) {
+        document.getElementById('cityList').classList.remove('open');
+        return;
+      }
+      cityTimer = setTimeout(async () => {
+        try {
+          const data = await npRequest('Address', 'searchSettlements', { CityName: q, Limit: '12' });
+          const addresses = (data.data && data.data[0] && data.data[0].Addresses) || [];
+          const items = addresses.map(a => ({
+            label: a.Present,
+            ref: a.DeliveryCity,
+            name: a.MainDescription
+          }));
+          renderList(document.getElementById('cityList'), items, (item) => {
+            document.getElementById('orderCity').value = item.label;
+            selectedCityRef = item.ref;
+            document.getElementById('cityRef').value = item.ref;
+            loadWarehouses(item.ref);
+          });
+        } catch (err) {
+          console.warn('NP city search error', err);
+        }
+      }, 350);
+    });
+
+    async function loadWarehouses(cityRef) {
+      if (!cityRef) return;
+      try {
+        const data = await npRequest('Address', 'getWarehouses', {
+          CityRef: cityRef,
+          Limit: '500'
+        });
+        warehousesCache = (data.data || []).map(w => ({
+          label: w.Description,
+          ref: w.Ref,
+          type: w.CategoryOfWarehouse || w.TypeOfWarehouse || ''
+        }));
+      } catch (err) {
+        console.warn('NP warehouses error', err);
+        warehousesCache = [];
+      }
+    }
+
+    function filterWarehouses(query) {
+      const npType = document.getElementById('npType')?.value || 'Відділення';
+      let list = warehousesCache;
+      if (npType === 'Поштомат') {
+        list = list.filter(w => /поштомат|Postomat|parcel/i.test(w.label + ' ' + w.type));
+      } else if (npType === 'Відділення') {
+        list = list.filter(w => !/поштомат|Postomat/i.test(w.label));
+      }
+      const q = (query || '').toLowerCase();
+      if (q) list = list.filter(w => w.label.toLowerCase().includes(q));
+      return list.slice(0, 40);
+    }
+
+    document.getElementById('orderBranch')?.addEventListener('focus', function () {
+      if (!selectedCityRef && !document.getElementById('cityRef').value) return;
+      const items = filterWarehouses(this.value).map(w => ({ label: w.label, ref: w.ref }));
+      renderList(document.getElementById('branchList'), items, (item) => {
+        document.getElementById('orderBranch').value = item.label;
+      });
+    });
+
+    document.getElementById('orderBranch')?.addEventListener('input', function () {
+      const items = filterWarehouses(this.value).map(w => ({ label: w.label, ref: w.ref }));
+      renderList(document.getElementById('branchList'), items, (item) => {
+        document.getElementById('orderBranch').value = item.label;
+      });
+    });
+
+    document.getElementById('npType')?.addEventListener('change', function () {
+      document.getElementById('orderBranch').value = '';
+      updateAddressFields();
+    });
+
     // Pre-select product in form when clicking "Замовити"
     function selectProduct(id) {
       const select = document.getElementById('orderProduct');
@@ -891,20 +1162,66 @@
       }
     }
 
+    function toggleDelivery() {
+      const delivery = document.querySelector('input[name="delivery"]:checked');
+      const npExtra = document.getElementById('npExtra');
+      if (!delivery || !npExtra) return;
+      if (delivery.value === 'Нова Пошта') {
+        npExtra.classList.add('active');
+      } else {
+        npExtra.classList.remove('active');
+      }
+      updateAddressFields();
+    }
+
+    function updateAddressFields() {
+      const npType = document.getElementById('npType');
+      const branchGroup = document.getElementById('branchGroup');
+      const addressGroup = document.getElementById('addressGroup');
+      const delivery = document.querySelector('input[name="delivery"]:checked');
+      if (!branchGroup || !addressGroup) return;
+
+      const isAddress = delivery && delivery.value === 'Нова Пошта' && npType && npType.value === 'Адресна доставка';
+      if (isAddress) {
+        branchGroup.style.display = 'none';
+        addressGroup.style.display = 'block';
+      } else {
+        branchGroup.style.display = 'block';
+        addressGroup.style.display = 'none';
+      }
+    }
+
     // Order form → Telegram
     function sendOrder(e) {
       e.preventDefault();
       const name = document.getElementById('orderName').value.trim();
       const phone = document.getElementById('orderPhone').value.trim();
       const product = document.getElementById('orderProduct').value;
+      const payment = document.querySelector('input[name="payment"]:checked')?.value || '';
+      const delivery = document.querySelector('input[name="delivery"]:checked')?.value || '';
+      const npType = document.getElementById('npType')?.value || '';
+      const city = document.getElementById('orderCity').value.trim();
+      const branch = document.getElementById('orderBranch').value.trim();
+      const address = document.getElementById('orderAddress').value.trim();
       const comment = document.getElementById('orderComment').value.trim();
 
-      if (!name || !phone || !product) return false;
+      if (!name || !phone || !product || !city) return false;
 
       let text = '🛒 *Нове замовлення*%0A%0A';
       text += '👤 Імʼя: ' + encodeURIComponent(name) + '%0A';
       text += '📞 Телефон: ' + encodeURIComponent(phone) + '%0A';
       text += '📦 Товар: ' + encodeURIComponent(product) + '%0A';
+      text += '💳 Оплата: ' + encodeURIComponent(payment) + '%0A';
+      text += '🚚 Доставка: ' + encodeURIComponent(delivery) + '%0A';
+      if (delivery === 'Нова Пошта' && npType) {
+        text += '📍 Тип НП: ' + encodeURIComponent(npType) + '%0A';
+      }
+      text += '🏙 Місто: ' + encodeURIComponent(city) + '%0A';
+      if (npType === 'Адресна доставка' && address) {
+        text += '🏠 Адреса: ' + encodeURIComponent(address) + '%0A';
+      } else if (branch) {
+        text += '🏢 Відділення: ' + encodeURIComponent(branch) + '%0A';
+      }
       if (comment) {
         text += '💬 Коментар: ' + encodeURIComponent(comment) + '%0A';
       }
