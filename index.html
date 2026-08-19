@@ -3,147 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Безперебійні комплекти для роутера | Power Router</title>
-  <meta name="description" content="Безперебійне живлення для роутера та GPON під час відключень світла. Комплекти PowerBank + DC блок з наскрізною зарядкою. Інтернет 24/7.">
+  <title>PowerRouter — Безперебійні комплекти для роутера</title>
+  <meta name="description" content="Заводський DC1018P 10400 mAh та збірний комплект 20000 mAh. Інтернет під час відключень світла.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #111215;
+      --card: #1A1B1F;
       --text: #F5F5F7;
       --muted: #86868B;
       --accent: #C5A880;
       --accent-hover: #D4BC9A;
       --border: #2A2A2E;
-      --card: #18181B;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
+      background: var(--bg); color: var(--text);
+      line-height: 1.5; -webkit-font-smoothing: antialiased;
     }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    a { color: inherit; }
 
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-
-    /* Header */
     header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(17, 18, 21, 0.85);
-      backdrop-filter: blur(12px);
+      background: rgba(17,18,21,0.9); backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
     .header-inner {
-      display: flex; align-items: center; justify-content: space-between; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
     }
-    .logo {
-      font-weight: 700; font-size: 18px; letter-spacing: -0.02em;
-      color: var(--text); text-decoration: none;
-    }
+    .logo { font-weight: 700; font-size: 18px; text-decoration: none; }
     .logo span { color: var(--accent); }
-    nav { display: flex; gap: 28px; align-items: center; }
-    nav a {
-      color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500;
-      transition: color 0.2s;
-    }
+    nav { display: flex; gap: 24px; }
+    nav a { text-decoration: none; font-size: 14px; color: var(--muted); transition: color .2s; }
     nav a:hover { color: var(--text); }
-    .lang-switch {
-      display: flex; gap: 4px; background: var(--card);
-      border-radius: 6px; padding: 3px; border: 1px solid var(--border);
-    }
+    .lang-switch { display: flex; gap: 4px; }
     .lang-btn {
-      padding: 4px 10px; font-size: 12px; font-weight: 600;
-      border: none; background: transparent; color: var(--muted);
-      cursor: pointer; border-radius: 4px; transition: all 0.2s;
+      background: transparent; border: 1px solid var(--border); color: var(--muted);
+      padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 600;
+      cursor: pointer; font-family: inherit;
     }
-    .lang-btn.active { background: var(--accent); color: #111215; }
+    .lang-btn.active { background: var(--accent); color: #111215; border-color: var(--accent); }
 
-    /* Hero */
-    .hero {
-      padding: 120px 0 60px;
-    }
+    .hero { padding: 120px 0 60px; }
     .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(197, 168, 128, 0.12); color: var(--accent);
+      background: rgba(197,168,128,0.12); color: var(--accent);
       font-size: 13px; font-weight: 600; padding: 6px 14px;
       border-radius: 100px; margin-bottom: 20px;
-      border: 1px solid rgba(197, 168, 128, 0.25);
+      border: 1px solid rgba(197,168,128,0.25);
     }
     .hero h1 {
       font-size: clamp(28px, 4vw, 42px); font-weight: 700;
       letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px;
-      text-align: left;
     }
-    .hero p {
-      font-size: 17px; color: var(--muted); margin-bottom: 28px;
-      text-align: left; max-width: 460px;
-    }
+    .hero p { font-size: 17px; color: var(--muted); margin-bottom: 28px; max-width: 460px; }
+    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-image img { width: 100%; border-radius: 20px; background: #0D0D0F; }
+
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       padding: 14px 28px; font-size: 15px; font-weight: 600;
-      border-radius: 10px; text-decoration: none; transition: all 0.2s;
-      cursor: pointer; border: none;
+      border-radius: 10px; text-decoration: none; transition: all .2s;
+      cursor: pointer; border: none; font-family: inherit;
     }
     .btn-primary { background: var(--accent); color: #111215; }
     .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
     .btn-secondary {
       background: transparent; color: var(--text); border: 1px solid var(--border);
     }
-    .btn-secondary:hover { border-color: var(--muted); background: rgba(255,255,255,0.03); }
-    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
-    .hero-image {
-      max-width: 100%;
-    }
-    .hero-image img {
-      width: 100%; height: auto; border-radius: 20px;
-      background: #0D0D0F;
-    }
-    .product-badge {
-      position: absolute;
-      top: 14px;
-      right: -38px;
-      z-index: 2;
-      width: 140px;
-      padding: 7px 0;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      text-align: center;
-      text-transform: uppercase;
-      transform: rotate(45deg);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.35);
-      pointer-events: none;
-      white-space: nowrap;
-    }
-    .product-badge.assembled {
-      background: var(--accent);
-      color: #111215;
-    }
-    .product-badge.factory {
-      background: #3A3A40;
-      color: #F5F5F7;
-    }
-    @media (max-width: 768px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
-      .hero h1, .hero p { text-align: center; margin-left: auto; margin-right: auto; }
-      .hero-buttons { justify-content: center; }
-      .hero { padding: 100px 0 50px; }
-    }
+    .btn-secondary:hover { border-color: var(--muted); }
 
-    /* Sections */
     section { padding: 80px 0; }
     .section-title {
       font-size: clamp(26px, 4vw, 36px); font-weight: 700;
@@ -154,158 +91,138 @@
       margin: 0 auto 48px; font-size: 16px;
     }
 
-    /* Benefits */
     .benefits-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
     }
     .benefit-card {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 28px 24px; transition: border-color 0.2s;
+      border-radius: 16px; padding: 28px 24px;
     }
-    .benefit-card:hover { border-color: rgba(197, 168, 128, 0.35); }
     .benefit-icon {
-      width: 44px; height: 44px; background: rgba(197, 168, 128, 0.12);
+      width: 44px; height: 44px; background: rgba(197,168,128,0.12);
       border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      font-size: 22px; margin-bottom: 16px; color: var(--accent);
+      font-size: 22px; margin-bottom: 16px;
     }
     .benefit-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
-    .benefit-card p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+    .benefit-card p { font-size: 14px; color: var(--muted); }
 
-    /* Products */
     .products-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px;
     }
     .product-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 20px; overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s;
       display: flex; flex-direction: column;
+      transition: transform .2s, border-color .2s;
     }
     .product-card:hover {
-      transform: translateY(-4px); border-color: rgba(197, 168, 128, 0.4);
+      transform: translateY(-4px); border-color: rgba(197,168,128,0.4);
     }
-    .product-img {
-      position: relative;
-      aspect-ratio: 1; background: #0D0D0F;
-      display: flex; align-items: center; justify-content: center; padding: 20px;
-      overflow: hidden;
+    .product-gallery {
+      position: relative; background: #0D0D0F; aspect-ratio: 1;
+      cursor: pointer;
     }
-    .product-img img {
-      max-width: 100%; max-height: 260px; object-fit: contain;
+    .product-gallery img {
+      width: 100%; height: 100%; object-fit: contain; padding: 16px;
+      display: none;
     }
+    .product-gallery img.active { display: block; }
+    .gallery-nav {
+      position: absolute; bottom: 12px; left: 0; right: 0;
+      display: flex; justify-content: center; gap: 6px; z-index: 2;
+    }
+    .gallery-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.25); border: none; cursor: pointer; padding: 0;
+    }
+    .gallery-dot.active { background: var(--accent); }
+    .gallery-arrows {
+      position: absolute; top: 50%; left: 8px; right: 8px;
+      transform: translateY(-50%);
+      display: flex; justify-content: space-between; pointer-events: none;
+    }
+    .gallery-arrows button {
+      pointer-events: auto; width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .product-badge {
+      position: absolute; top: 14px; right: -38px; z-index: 3;
+      width: 140px; padding: 7px 0; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.03em; text-align: center; text-transform: uppercase;
+      transform: rotate(45deg); box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+      pointer-events: none; white-space: nowrap;
+    }
+    .product-badge.assembled { background: var(--accent); color: #111215; }
+    .product-badge.factory { background: #3A3A40; color: #F5F5F7; }
     .product-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
     .product-body h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
-    .product-price {
-      font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 10px;
-    }
-    .product-body p {
-      font-size: 14px; color: var(--muted); margin-bottom: 16px; line-height: 1.5; flex: 1;
-    }
-    .product-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .product-price { font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 10px; }
+    .product-body p { font-size: 14px; color: var(--muted); margin-bottom: 16px; flex: 1; }
+    .product-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
     .tag {
-      font-size: 12px; font-weight: 500; padding: 4px 10px;
-      background: rgba(197, 168, 128, 0.1); color: var(--accent); border-radius: 6px;
-    }
-    .tag.muted {
-      background: rgba(134, 134, 139, 0.15); color: var(--muted);
+      font-size: 12px; padding: 4px 10px; border-radius: 6px;
+      background: rgba(255,255,255,0.06); color: var(--muted);
     }
 
-    /* How it works */
     .scheme-wrap {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 24px; overflow: hidden;
+      border-radius: 20px; padding: 24px; overflow: hidden; max-width: 720px; margin: 0 auto;
     }
-    .scheme-wrap img { width: 100%; height: auto; border-radius: 12px; }
+    .scheme-wrap img { width: 100%; border-radius: 12px; }
 
-    /* CTA */
     .cta-section {
       text-align: center;
-      background: linear-gradient(180deg, transparent, rgba(197, 168, 128, 0.06));
+      background: linear-gradient(180deg, transparent, rgba(197,168,128,0.06));
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
     }
     .cta-section h2 { font-size: clamp(24px, 4vw, 32px); margin-bottom: 12px; }
     .cta-section p { color: var(--muted); margin-bottom: 28px; }
 
-    /* Order form */
     .order-form {
-      max-width: 520px;
-      margin: 0 auto;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px 24px;
+      max-width: 520px; margin: 0 auto;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 28px 24px;
     }
     .form-group { margin-bottom: 18px; }
     .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--muted);
-      margin-bottom: 6px;
+      display: block; font-size: 13px; font-weight: 500;
+      color: var(--muted); margin-bottom: 6px;
     }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 14px;
-      font-size: 15px;
-      font-family: inherit;
-      color: var(--text);
-      background: #0D0D0F;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      outline: none;
-      transition: border-color 0.2s;
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 12px 14px; font-size: 15px; font-family: inherit;
+      color: var(--text); background: #0D0D0F; border: 1px solid var(--border);
+      border-radius: 10px; outline: none; transition: border-color .2s;
     }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
       border-color: var(--accent);
     }
     .form-group textarea { resize: vertical; min-height: 80px; }
     .form-group select {
       appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%86868B' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      padding-right: 36px;
+      background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
     }
-    .form-submit {
-      width: 100%;
-      margin-top: 8px;
-    }
-
-    .radio-group {
-      display: flex; flex-direction: column; gap: 8px;
-    }
+    .form-submit { width: 100%; margin-top: 8px; }
+    .radio-group { display: flex; flex-direction: column; gap: 8px; }
     .radio-option {
       display: flex; align-items: center; gap: 10px;
-      padding: 12px 14px;
-      background: #0D0D0F;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      cursor: pointer;
-      transition: border-color 0.2s;
+      padding: 12px 14px; background: #0D0D0F; border: 1px solid var(--border);
+      border-radius: 10px; cursor: pointer;
     }
     .radio-option:hover { border-color: rgba(197,168,128,0.4); }
-    .radio-option input {
-      width: 16px; height: 16px; accent-color: var(--accent);
-      flex-shrink: 0;
-    }
-    .radio-option span { font-size: 14px; color: var(--text); }
+    .radio-option input { width: 16px; height: 16px; accent-color: var(--accent); flex-shrink: 0; }
+    .radio-option span { font-size: 14px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
     .form-terms {
-      margin-top: 8px;
-      padding: 14px 16px;
-      background: rgba(197,168,128,0.08);
-      border: 1px solid rgba(197,168,128,0.2);
-      border-radius: 12px;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.55;
+      margin-top: 8px; padding: 14px 16px;
+      background: rgba(197,168,128,0.08); border: 1px solid rgba(197,168,128,0.2);
+      border-radius: 12px; font-size: 13px; color: var(--muted); line-height: 1.55;
     }
-    .form-terms strong { color: var(--accent); font-weight: 600; }
+    .form-terms strong { color: var(--accent); }
+    .delivery-extra { display: none; }
+    .delivery-extra.active { display: block; }
     .ac-wrap { position: relative; }
     .ac-list {
       position: absolute; left: 0; right: 0; top: 100%;
@@ -318,22 +235,16 @@
       padding: 10px 14px; font-size: 14px; cursor: pointer;
       border-bottom: 1px solid var(--border);
     }
-    .ac-item:last-child { border-bottom: none; }
-    .ac-item:hover, .ac-item.active { background: rgba(197,168,128,0.12); color: var(--accent); }
-
-    .delivery-extra { display: none; }
-    .delivery-extra.active { display: block; }
-
-    /* Contacts */
+    .ac-item:hover { background: rgba(197,168,128,0.12); color: var(--accent); }
 
     .contacts-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px; max-width: 700px; margin: 0 auto;
+      gap: 16px; max-width: 500px; margin: 0 auto;
     }
     .contact-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 14px; padding: 20px; text-align: center;
-      text-decoration: none; color: var(--text); transition: border-color 0.2s;
+      text-decoration: none; color: var(--text); transition: border-color .2s;
     }
     .contact-card:hover { border-color: var(--accent); }
     .contact-card .icon { font-size: 28px; margin-bottom: 10px; }
@@ -345,24 +256,54 @@
       text-align: center; color: var(--muted); font-size: 13px;
     }
 
+    /* Lightbox */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+      flex-direction: column; padding: 20px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img {
+      max-width: min(900px, 100%); max-height: 75vh;
+      object-fit: contain; border-radius: 12px;
+    }
+    .lightbox-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); border: none; color: #fff;
+      font-size: 24px; cursor: pointer;
+    }
+    .lightbox-nav {
+      display: flex; gap: 16px; margin-top: 20px; align-items: center;
+    }
+    .lightbox-nav button {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; font-size: 22px; cursor: pointer;
+    }
+    .lightbox-counter { color: var(--muted); font-size: 14px; min-width: 60px; text-align: center; }
+
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
     span[data-lang].active { display: inline; }
 
     @media (max-width: 768px) {
       nav { display: none; }
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero h1, .hero p { text-align: center; margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+      .hero { padding: 100px 0 50px; }
       section { padding: 60px 0; }
+      .form-row { grid-template-columns: 1fr; }
     }
   </style>
 
-  <!-- Structured data for Google Merchant / Shopping -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "PowerRouter",
     "url": "https://ваш-домен.com.ua",
-    "logo": "https://ваш-домен.com.ua/hoco-j86.jpg",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+380995643468",
@@ -371,7 +312,6 @@
     }
   }
   </script>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -382,9 +322,9 @@
         "position": 1,
         "item": {
           "@type": "Product",
-          "name": "Комплект 20 000 mAh — PowerBank + DC-блок для роутера",
-          "image": "https://ваш-домен.com.ua/kit-20k.jpg",
-          "description": "Збірний комплект: PowerBank 20 000 mAh з наскрізною зарядкою + DC-блок 5/9/12V + 2 кабелі. Безперебійне живлення роутера та GPON під час відключень світла.",
+          "name": "Комплект 20 000 mAh — збірний безперебійник для роутера",
+          "image": "https://ваш-домен.com.ua/kit20-1.jpg",
+          "description": "Збірний комплект: PowerBank 20 000 mAh з наскрізною зарядкою + DC-блок + кабелі. Безперебійне живлення роутера та GPON.",
           "sku": "KIT-20K",
           "brand": { "@type": "Brand", "name": "PowerRouter" },
           "offers": {
@@ -393,8 +333,7 @@
             "priceCurrency": "UAH",
             "price": "1690",
             "availability": "https://schema.org/InStock",
-            "itemCondition": "https://schema.org/NewCondition",
-            "seller": { "@type": "Organization", "name": "ФОП Каблучко Олександр Володимирович" }
+            "itemCondition": "https://schema.org/NewCondition"
           }
         }
       },
@@ -403,82 +342,18 @@
         "position": 2,
         "item": {
           "@type": "Product",
-          "name": "Комплект 10 000 mAh — PowerBank + DC-блок для роутера",
-          "image": "https://ваш-домен.com.ua/scheme.jpg",
-          "description": "Заводський набір: PowerBank 10 000 mAh з наскрізною зарядкою + DC-блок + кабелі. Компактне безперебійне живлення для роутера.",
-          "sku": "KIT-10K",
-          "brand": { "@type": "Brand", "name": "PowerRouter" },
+          "name": "DC1018P — заводський безперебійник 10400 mAh",
+          "image": "https://ваш-домен.com.ua/dc-1.jpg",
+          "description": "Заводський DC UPS DC1018P, батарея 10400 mAh, виходи 5V/9V/12V, USB, PoE. Готовий комплект у коробці.",
+          "sku": "DC1018P",
+          "brand": { "@type": "Brand", "name": "DC UPS" },
           "offers": {
             "@type": "Offer",
             "url": "https://ваш-домен.com.ua/#products",
             "priceCurrency": "UAH",
             "price": "1690",
             "availability": "https://schema.org/InStock",
-            "itemCondition": "https://schema.org/NewCondition",
-            "seller": { "@type": "Organization", "name": "ФОП Каблучко Олександр Володимирович" }
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "Product",
-          "name": "Hoco J86 PowerBank 40000 mAh",
-          "image": "https://ваш-домен.com.ua/hoco-j86.jpg",
-          "description": "Hoco J86 40000 mAh з дисплеєм, 22.5W PD/QC, наскрізна зарядка. Для роутера та телефонів.",
-          "sku": "HOCO-J86",
-          "brand": { "@type": "Brand", "name": "Hoco" },
-          "offers": {
-            "@type": "Offer",
-            "url": "https://ваш-домен.com.ua/#products",
-            "priceCurrency": "UAH",
-            "price": "1990",
-            "availability": "https://schema.org/InStock",
-            "itemCondition": "https://schema.org/NewCondition",
-            "seller": { "@type": "Organization", "name": "ФОП Каблучко Олександр Володимирович" }
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "item": {
-          "@type": "Product",
-          "name": "Hoco J86A PowerBank 50000 mAh",
-          "image": "https://ваш-домен.com.ua/hoco-j86a.jpg",
-          "description": "Hoco J86A 50000 mAh, 22.5W, наскрізна зарядка. Збільшена ємність для довшої автономної роботи роутера.",
-          "sku": "HOCO-J86A",
-          "brand": { "@type": "Brand", "name": "Hoco" },
-          "offers": {
-            "@type": "Offer",
-            "url": "https://ваш-домен.com.ua/#products",
-            "priceCurrency": "UAH",
-            "price": "2150",
-            "availability": "https://schema.org/InStock",
-            "itemCondition": "https://schema.org/NewCondition",
-            "seller": { "@type": "Organization", "name": "ФОП Каблучко Олександр Володимирович" }
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "item": {
-          "@type": "Product",
-          "name": "Hoco J86B PowerBank 60000 mAh",
-          "image": "https://ваш-домен.com.ua/hoco-j86b.jpg",
-          "description": "Hoco J86B 60000 mAh (222 Wh), максимальна ємність для роутера та кількох пристроїв.",
-          "sku": "HOCO-J86B",
-          "brand": { "@type": "Brand", "name": "Hoco" },
-          "offers": {
-            "@type": "Offer",
-            "url": "https://ваш-домен.com.ua/#products",
-            "priceCurrency": "UAH",
-            "price": "2490",
-            "availability": "https://schema.org/InStock",
-            "itemCondition": "https://schema.org/NewCondition",
-            "seller": { "@type": "Organization", "name": "ФОП Каблучко Олександр Володимирович" }
+            "itemCondition": "https://schema.org/NewCondition"
           }
         }
       }
@@ -504,11 +379,10 @@
   </header>
 
   <main>
-    <!-- Hero -->
     <section class="hero">
       <div class="container">
         <div class="hero-grid">
-          <div class="hero-content">
+          <div>
             <div class="hero-badge">
               <span>⚡</span>
               <span data-lang="uk" class="active">Інтернет навіть без світла</span>
@@ -519,28 +393,27 @@
               <span data-lang="ru">Бесперебойные комплекты<br>для роутера и GPON</span>
             </h1>
             <p>
-              <span data-lang="uk" class="active">PowerBank з наскрізною зарядкою + DC-блок. Підключив один раз — інтернет працює 10–30+ годин під час відключень.</span>
-              <span data-lang="ru">PowerBank с сквозной зарядкой + DC-блок. Подключил один раз — интернет работает 10–30+ часов во время отключений.</span>
+              <span data-lang="uk" class="active">Заводський DC1018P або збірний комплект 20 000 mAh. Підключив один раз — інтернет працює під час відключень.</span>
+              <span data-lang="ru">Заводской DC1018P или сборный комплект 20 000 mAh. Подключил один раз — интернет работает во время отключений.</span>
             </p>
             <div class="hero-buttons">
               <a href="#order" class="btn btn-primary">
-                <span data-lang="uk" class="active">Замовити комплект</span>
-                <span data-lang="ru">Заказать комплект</span>
+                <span data-lang="uk" class="active">Замовити</span>
+                <span data-lang="ru">Заказать</span>
               </a>
               <a href="#products" class="btn btn-secondary">
-                <span data-lang="uk" class="active">Дивитися ціни</span>
-                <span data-lang="ru">Смотреть цены</span>
+                <span data-lang="uk" class="active">Дивитися комплекти</span>
+                <span data-lang="ru">Смотреть комплекты</span>
               </a>
             </div>
           </div>
           <div class="hero-image">
-            <img src="hoco-j86.jpg" alt="Hoco PowerBank для роутера" loading="eager">
+            <img src="dc-1.jpg" alt="DC1018P безперебійник" loading="eager">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Benefits -->
     <section id="benefits">
       <div class="container">
         <h2 class="section-title">
@@ -548,78 +421,81 @@
           <span data-lang="ru">Почему это работает</span>
         </h2>
         <p class="section-sub">
-          <span data-lang="uk" class="active">Спеціально зібрані комплекти під українські реалії відключень</span>
-          <span data-lang="ru">Специально собранные комплекты под украинские реалии отключений</span>
+          <span data-lang="uk" class="active">Спеціально під українські реалії відключень</span>
+          <span data-lang="ru">Специально под украинские реалии отключений</span>
         </p>
         <div class="benefits-grid">
           <div class="benefit-card">
             <div class="benefit-icon">🔌</div>
             <h3>
-              <span data-lang="uk" class="active">Наскрізна зарядка</span>
-              <span data-lang="ru">Сквозная зарядка</span>
+              <span data-lang="uk" class="active">Миттєве перемикання</span>
+              <span data-lang="ru">Мгновенное переключение</span>
             </h3>
             <p>
-              <span data-lang="uk" class="active">Можна одночасно заряджати PowerBank від мережі і живити роутер. Без перерв.</span>
-              <span data-lang="ru">Можно одновременно заряжать PowerBank от сети и питать роутер. Без перерывов.</span>
-            </p>
-          </div>
-          <div class="benefit-card">
-            <div class="benefit-icon">⚡</div>
-            <h3>
-              <span data-lang="uk" class="active">Автоматичне перемикання</span>
-              <span data-lang="ru">Автоматическое переключение</span>
-            </h3>
-            <p>
-              <span data-lang="uk" class="active">DC-блок миттєво переходить на акумулятор при зникненні 220В. Роутер не перезавантажується.</span>
-              <span data-lang="ru">DC-блок мгновенно переходит на аккумулятор при пропадании 220В. Роутер не перезагружается.</span>
+              <span data-lang="uk" class="active">При зникненні 220В роутер продовжує працювати без перезавантаження.</span>
+              <span data-lang="ru">При пропаже 220В роутер продолжает работать без перезагрузки.</span>
             </p>
           </div>
           <div class="benefit-card">
             <div class="benefit-icon">📡</div>
             <h3>
-              <span data-lang="uk" class="active">Для будь-якого роутера</span>
-              <span data-lang="ru">Для любого роутера</span>
+              <span data-lang="uk" class="active">5V / 9V / 12V</span>
+              <span data-lang="ru">5V / 9V / 12V</span>
             </h3>
             <p>
-              <span data-lang="uk" class="active">5V / 9V / 12V виходи. Підходить для більшості роутерів, GPON-терміналів та модемів.</span>
-              <span data-lang="ru">5V / 9V / 12V выходы. Подходит для большинства роутеров, GPON-терминалов и модемов.</span>
+              <span data-lang="uk" class="active">Підходить для більшості роутерів, GPON-терміналів та модемів.</span>
+              <span data-lang="ru">Подходит для большинства роутеров, GPON-терминалов и модемов.</span>
             </p>
           </div>
           <div class="benefit-card">
             <div class="benefit-icon">⏱️</div>
             <h3>
-              <span data-lang="uk" class="active">10–30+ годин роботи</span>
-              <span data-lang="ru">10–30+ часов работы</span>
+              <span data-lang="uk" class="active">Години автономної роботи</span>
+              <span data-lang="ru">Часы автономной работы</span>
             </h3>
             <p>
-              <span data-lang="uk" class="active">Залежно від ємності PowerBank і споживання вашого обладнання.</span>
-              <span data-lang="ru">В зависимости от ёмкости PowerBank и потребления вашего оборудования.</span>
+              <span data-lang="uk" class="active">Залежно від ємності та споживання вашого обладнання.</span>
+              <span data-lang="ru">В зависимости от ёмкости и потребления вашего оборудования.</span>
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Products -->
     <section id="products">
       <div class="container">
         <h2 class="section-title">
-          <span data-lang="uk" class="active">Комплекти та PowerBank</span>
-          <span data-lang="ru">Комплекты и PowerBank</span>
+          <span data-lang="uk" class="active">Комплекти</span>
+          <span data-lang="ru">Комплекты</span>
         </h2>
         <p class="section-sub">
-          <span data-lang="uk" class="active">Усі PowerBank з наскрізною зарядкою. Ціни актуальні.</span>
-          <span data-lang="ru">Все PowerBank со сквозной зарядкой. Цены актуальные.</span>
+          <span data-lang="uk" class="active">Два перевірені варіанти — заводський і збірний</span>
+          <span data-lang="ru">Два проверенных варианта — заводской и сборный</span>
         </p>
         <div class="products-grid">
 
-          <!-- Комплект 20k -->
+          <!-- Kit 20k -->
           <div class="product-card">
-            <div class="product-img">
-              <img src="kit-20k.jpg" alt="Комплект 20 000 mAh" loading="lazy">
+            <div class="product-gallery" data-gallery="kit20" onclick="openLightbox('kit20')">
               <div class="product-badge assembled">
                 <span data-lang="uk" class="active">Збірний</span>
                 <span data-lang="ru">Сборный</span>
+              </div>
+              <img src="kit20-1.jpg" alt="Комплект 20 000 mAh" class="active" data-i="0">
+              <img src="kit20-2.jpg" alt="Порти" data-i="1">
+              <img src="kit20-3.jpg" alt="20000 mAh" data-i="2">
+              <img src="kit20-4.jpg" alt="Кабелі" data-i="3">
+              <img src="kit20-5.jpg" alt="Комплект" data-i="4">
+              <div class="gallery-arrows" onclick="event.stopPropagation()">
+                <button type="button" onclick="slideGallery('kit20', -1)">‹</button>
+                <button type="button" onclick="slideGallery('kit20', 1)">›</button>
+              </div>
+              <div class="gallery-nav" onclick="event.stopPropagation()">
+                <button type="button" class="gallery-dot active" onclick="goGallery('kit20',0)"></button>
+                <button type="button" class="gallery-dot" onclick="goGallery('kit20',1)"></button>
+                <button type="button" class="gallery-dot" onclick="goGallery('kit20',2)"></button>
+                <button type="button" class="gallery-dot" onclick="goGallery('kit20',3)"></button>
+                <button type="button" class="gallery-dot" onclick="goGallery('kit20',4)"></button>
               </div>
             </div>
             <div class="product-body">
@@ -629,12 +505,13 @@
               </h3>
               <div class="product-price">1 690 ₴</div>
               <p>
-                <span data-lang="uk" class="active">PowerBank 20 000 mAh + DC-блок + 2 кабелі. Оптимальний варіант для більшості роутерів.</span>
-                <span data-lang="ru">PowerBank 20 000 mAh + DC-блок + 2 кабеля. Оптимальный вариант для большинства роутеров.</span>
+                <span data-lang="uk" class="active">PowerBank 20 000 mAh з наскрізною зарядкою + DC-блок + кабелі. Оптимальний варіант для більшості роутерів.</span>
+                <span data-lang="ru">PowerBank 20 000 mAh со сквозной зарядкой + DC-блок + кабели. Оптимальный вариант для большинства роутеров.</span>
               </p>
               <div class="product-tags">
                 <span class="tag">20 000 mAh</span>
                 <span class="tag">Наскрізна зарядка</span>
+                <span class="tag">5/9/12V</span>
               </div>
               <a href="#order" class="btn btn-primary" style="width:100%" onclick="selectProduct('kit20')">
                 <span data-lang="uk" class="active">Замовити</span>
@@ -643,102 +520,43 @@
             </div>
           </div>
 
-          <!-- Комплект 10k -->
+          <!-- DC1018P -->
           <div class="product-card">
-            <div class="product-img">
-              <img src="scheme.jpg" alt="Комплект 10 000 mAh" loading="lazy" style="max-height:220px">
+            <div class="product-gallery" data-gallery="dc" onclick="openLightbox('dc')">
               <div class="product-badge factory">
                 <span data-lang="uk" class="active">Заводський</span>
                 <span data-lang="ru">Заводской</span>
               </div>
+              <img src="dc-1.jpg" alt="DC1018P" class="active" data-i="0">
+              <img src="dc-2.jpg" alt="DC1018P порти" data-i="1">
+              <img src="dc-3.jpg" alt="DC1018P роз'єми" data-i="2">
+              <img src="dc-4.jpg" alt="DC1018P 10400 mAh" data-i="3">
+              <img src="dc-5.jpg" alt="DC1018P упаковка" data-i="4">
+              <div class="gallery-arrows" onclick="event.stopPropagation()">
+                <button type="button" onclick="slideGallery('dc', -1)">‹</button>
+                <button type="button" onclick="slideGallery('dc', 1)">›</button>
+              </div>
+              <div class="gallery-nav" onclick="event.stopPropagation()">
+                <button type="button" class="gallery-dot active" onclick="goGallery('dc',0)"></button>
+                <button type="button" class="gallery-dot" onclick="goGallery('dc',1)"></button>
+                <button type="button" class="gallery-dot" onclick="goGallery('dc',2)"></button>
+                <button type="button" class="gallery-dot" onclick="goGallery('dc',3)"></button>
+                <button type="button" class="gallery-dot" onclick="goGallery('dc',4)"></button>
+              </div>
             </div>
             <div class="product-body">
-              <h3>
-                <span data-lang="uk" class="active">Комплект 10 000 mAh</span>
-                <span data-lang="ru">Комплект 10 000 mAh</span>
-              </h3>
+              <h3>DC1018P · 10 400 mAh</h3>
               <div class="product-price">1 690 ₴</div>
               <p>
-                <span data-lang="uk" class="active">PowerBank 10 000 mAh + DC-блок + кабелі. Компактний і надійний варіант.</span>
-                <span data-lang="ru">PowerBank 10 000 mAh + DC-блок + кабели. Компактный и надёжный вариант.</span>
+                <span data-lang="uk" class="active">Заводський DC UPS у зборі. Батарея 10 400 mAh, виходи 5/9/12V, USB, PoE. Готовий до підключення з коробки.</span>
+                <span data-lang="ru">Заводской DC UPS в сборе. Батарея 10 400 mAh, выходы 5/9/12V, USB, PoE. Готов к подключению из коробки.</span>
               </p>
               <div class="product-tags">
-                <span class="tag">10 000 mAh</span>
-                <span class="tag">Наскрізна зарядка</span>
+                <span class="tag">10 400 mAh</span>
+                <span class="tag">PoE</span>
+                <span class="tag">5/9/12V</span>
               </div>
-              <a href="#order" class="btn btn-primary" style="width:100%" onclick="selectProduct('kit10')">
-                <span data-lang="uk" class="active">Замовити</span>
-                <span data-lang="ru">Заказать</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Hoco J86 -->
-          <div class="product-card">
-            <div class="product-img">
-              <img src="hoco-j86.jpg" alt="Hoco J86 40000 mAh" loading="lazy">
-            </div>
-            <div class="product-body">
-              <h3>Hoco J86 · 40 000 mAh</h3>
-              <div class="product-price">1 990 ₴</div>
-              <p>
-                <span data-lang="uk" class="active">Потужний PowerBank з дисплеєм і ремінцем. Підходить для роутера + телефонів. 22.5W швидка зарядка.</span>
-                <span data-lang="ru">Мощный PowerBank с дисплеем и ремешком. Подходит для роутера + телефонов. 22.5W быстрая зарядка.</span>
-              </p>
-              <div class="product-tags">
-                <span class="tag">40 000 mAh</span>
-                <span class="tag">22.5W</span>
-                <span class="tag">PD / QC</span>
-              </div>
-              <a href="#order" class="btn btn-primary" style="width:100%" onclick="selectProduct('j86')">
-                <span data-lang="uk" class="active">Замовити</span>
-                <span data-lang="ru">Заказать</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Hoco J86A -->
-          <div class="product-card">
-            <div class="product-img">
-              <img src="hoco-j86a.jpg" alt="Hoco J86A 50000 mAh" loading="lazy">
-            </div>
-            <div class="product-body">
-              <h3>Hoco J86A · 50 000 mAh</h3>
-              <div class="product-price">2 150 ₴</div>
-              <p>
-                <span data-lang="uk" class="active">Збільшена ємність у тому ж форм-факторі. Ідеально, якщо потрібно більше годин автономної роботи.</span>
-                <span data-lang="ru">Увеличенная ёмкость в том же форм-факторе. Идеально, если нужно больше часов автономной работы.</span>
-              </p>
-              <div class="product-tags">
-                <span class="tag">50 000 mAh</span>
-                <span class="tag">22.5W</span>
-                <span class="tag">PD / QC</span>
-              </div>
-              <a href="#order" class="btn btn-primary" style="width:100%" onclick="selectProduct('j86a')">
-                <span data-lang="uk" class="active">Замовити</span>
-                <span data-lang="ru">Заказать</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Hoco J86B -->
-          <div class="product-card">
-            <div class="product-img">
-              <img src="hoco-j86b.jpg" alt="Hoco J86B 60000 mAh" loading="lazy">
-            </div>
-            <div class="product-body">
-              <h3>Hoco J86B · 60 000 mAh</h3>
-              <div class="product-price">2 490 ₴</div>
-              <p>
-                <span data-lang="uk" class="active">Максимальна ємність. Найдовша автономна робота для роутера та кількох пристроїв одночасно.</span>
-                <span data-lang="ru">Максимальная ёмкость. Самая долгая автономная работа для роутера и нескольких устройств одновременно.</span>
-              </p>
-              <div class="product-tags">
-                <span class="tag">60 000 mAh</span>
-                <span class="tag">222 Wh</span>
-                <span class="tag">PD 20W</span>
-              </div>
-              <a href="#order" class="btn btn-primary" style="width:100%" onclick="selectProduct('j86b')">
+              <a href="#order" class="btn btn-primary" style="width:100%" onclick="selectProduct('dc')">
                 <span data-lang="uk" class="active">Замовити</span>
                 <span data-lang="ru">Заказать</span>
               </a>
@@ -749,24 +567,22 @@
       </div>
     </section>
 
-    <!-- How it works -->
     <section id="how">
       <div class="container">
         <h2 class="section-title">
-          <span data-lang="uk" class="active">Як це працює</span>
-          <span data-lang="ru">Как это работает</span>
+          <span data-lang="uk" class="active">Як працює збірний комплект 20 000</span>
+          <span data-lang="ru">Как работает сборный комплект 20 000</span>
         </h2>
         <p class="section-sub">
-          <span data-lang="uk" class="active">Одна проста схема — і інтернет більше не залежить від світла</span>
-          <span data-lang="ru">Одна простая схема — и интернет больше не зависит от света</span>
+          <span data-lang="uk" class="active">Схема підключення PowerBank + DC-блок до роутера та GPON</span>
+          <span data-lang="ru">Схема подключения PowerBank + DC-блок к роутеру и GPON</span>
         </p>
         <div class="scheme-wrap">
-          <img src="scheme.jpg" alt="Схема підключення безперебійника до роутера" loading="lazy">
+          <img src="scheme-20k.jpg" alt="Схема підключення комплекту 20 000 mAh" loading="lazy">
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta-section">
       <div class="container">
         <h2>
@@ -774,8 +590,8 @@
           <span data-lang="ru">Готовы больше не оставаться без интернета?</span>
         </h2>
         <p>
-          <span data-lang="uk" class="active">Залиште заявку — підберемо оптимальний комплект під ваш роутер</span>
-          <span data-lang="ru">Оставьте заявку — подберём оптимальный комплект под ваш роутер</span>
+          <span data-lang="uk" class="active">Залиште заявку — підберемо комплект під ваш роутер</span>
+          <span data-lang="ru">Оставьте заявку — подберём комплект под ваш роутер</span>
         </p>
         <a href="#order" class="btn btn-primary">
           <span data-lang="uk" class="active">Замовити зараз</span>
@@ -784,7 +600,6 @@
       </div>
     </section>
 
-    <!-- Order form -->
     <section id="order">
       <div class="container">
         <h2 class="section-title">
@@ -797,39 +612,23 @@
         </p>
         <form class="order-form" id="orderForm" onsubmit="return sendOrder(event)">
           <div class="form-group">
-            <label>
-              <span data-lang="uk" class="active">Ваше ім’я *</span>
-              <span data-lang="ru">Ваше имя *</span>
-            </label>
-            <input type="text" id="orderName" name="name" required placeholder="Іван">
+            <label><span data-lang="uk" class="active">Ваше ім’я *</span><span data-lang="ru">Ваше имя *</span></label>
+            <input type="text" id="orderName" required placeholder="Іван">
           </div>
           <div class="form-group">
-            <label>
-              <span data-lang="uk" class="active">Телефон *</span>
-              <span data-lang="ru">Телефон *</span>
-            </label>
-            <input type="tel" id="orderPhone" name="phone" required placeholder="099 123 45 67">
+            <label><span data-lang="uk" class="active">Телефон *</span><span data-lang="ru">Телефон *</span></label>
+            <input type="tel" id="orderPhone" required placeholder="099 123 45 67">
           </div>
           <div class="form-group">
-            <label>
-              <span data-lang="uk" class="active">Товар *</span>
-              <span data-lang="ru">Товар *</span>
-            </label>
-            <select id="orderProduct" name="product" required>
+            <label><span data-lang="uk" class="active">Товар *</span><span data-lang="ru">Товар *</span></label>
+            <select id="orderProduct" required>
               <option value="" disabled selected>— оберіть —</option>
               <option value="Комплект 20 000 mAh — 1690 грн" data-id="kit20">Комплект 20 000 mAh — 1 690 ₴</option>
-              <option value="Комплект 10 000 mAh — 1690 грн" data-id="kit10">Комплект 10 000 mAh — 1 690 ₴</option>
-              <option value="Hoco J86 40 000 mAh — 1990 грн" data-id="j86">Hoco J86 40 000 mAh — 1 990 ₴</option>
-              <option value="Hoco J86A 50 000 mAh — 2150 грн" data-id="j86a">Hoco J86A 50 000 mAh — 2 150 ₴</option>
-              <option value="Hoco J86B 60 000 mAh — 2490 грн" data-id="j86b">Hoco J86B 60 000 mAh — 2 490 ₴</option>
+              <option value="DC1018P 10400 mAh — 1690 грн" data-id="dc">DC1018P 10 400 mAh — 1 690 ₴</option>
             </select>
           </div>
-
           <div class="form-group">
-            <label>
-              <span data-lang="uk" class="active">Спосіб оплати *</span>
-              <span data-lang="ru">Способ оплаты *</span>
-            </label>
+            <label><span data-lang="uk" class="active">Спосіб оплати *</span><span data-lang="ru">Способ оплаты *</span></label>
             <div class="radio-group">
               <label class="radio-option">
                 <input type="radio" name="payment" value="На рахунок" required checked>
@@ -843,12 +642,8 @@
               </label>
             </div>
           </div>
-
           <div class="form-group">
-            <label>
-              <span data-lang="uk" class="active">Доставка *</span>
-              <span data-lang="ru">Доставка *</span>
-            </label>
+            <label><span data-lang="uk" class="active">Доставка *</span><span data-lang="ru">Доставка *</span></label>
             <div class="radio-group">
               <label class="radio-option">
                 <input type="radio" name="delivery" value="Нова Пошта" required checked onchange="toggleDelivery()">
@@ -860,70 +655,45 @@
               </label>
             </div>
           </div>
-
           <div id="npExtra" class="delivery-extra active">
             <div class="form-group">
-              <label>
-                <span data-lang="uk" class="active">Тип доставки НП</span>
-                <span data-lang="ru">Тип доставки НП</span>
-              </label>
-              <select id="npType" name="npType">
+              <label><span data-lang="uk" class="active">Тип доставки НП</span><span data-lang="ru">Тип доставки НП</span></label>
+              <select id="npType">
                 <option value="Відділення">Відділення</option>
                 <option value="Поштомат">Поштомат</option>
                 <option value="Адресна доставка">Адресна доставка</option>
               </select>
             </div>
           </div>
-
           <div class="form-row">
             <div class="form-group">
-              <label>
-                <span data-lang="uk" class="active">Місто *</span>
-                <span data-lang="ru">Город *</span>
-              </label>
+              <label><span data-lang="uk" class="active">Місто *</span><span data-lang="ru">Город *</span></label>
               <div class="ac-wrap">
-                <input type="text" id="orderCity" name="city" required placeholder="Почніть вводити місто..." autocomplete="off">
+                <input type="text" id="orderCity" required placeholder="Почніть вводити місто..." autocomplete="off">
                 <div class="ac-list" id="cityList"></div>
               </div>
               <input type="hidden" id="cityRef" value="">
             </div>
             <div class="form-group" id="branchGroup">
-              <label>
-                <span data-lang="uk" class="active">Відділення / поштомат</span>
-                <span data-lang="ru">Отделение / почтомат</span>
-              </label>
+              <label><span data-lang="uk" class="active">Відділення / поштомат</span><span data-lang="ru">Отделение / почтомат</span></label>
               <div class="ac-wrap">
-                <input type="text" id="orderBranch" name="branch" placeholder="Оберіть або введіть..." autocomplete="off">
+                <input type="text" id="orderBranch" placeholder="Оберіть або введіть..." autocomplete="off">
                 <div class="ac-list" id="branchList"></div>
               </div>
             </div>
           </div>
-
           <div class="form-group" id="addressGroup" style="display:none">
-            <label>
-              <span data-lang="uk" class="active">Адреса доставки</span>
-              <span data-lang="ru">Адрес доставки</span>
-            </label>
-            <input type="text" id="orderAddress" name="address" placeholder="вул. Хрещатик, 1, кв. 5">
+            <label><span data-lang="uk" class="active">Адреса доставки</span><span data-lang="ru">Адрес доставки</span></label>
+            <input type="text" id="orderAddress" placeholder="вул. Хрещатик, 1">
           </div>
-
           <div class="form-group">
-            <label>
-              <span data-lang="uk" class="active">Коментар</span>
-              <span data-lang="ru">Комментарий</span>
-            </label>
-            <textarea id="orderComment" name="comment" placeholder="Побажання до замовлення..."></textarea>
+            <label><span data-lang="uk" class="active">Коментар</span><span data-lang="ru">Комментарий</span></label>
+            <textarea id="orderComment" placeholder="Побажання..."></textarea>
           </div>
-
           <div class="form-terms">
-            <span data-lang="uk" class="active">
-              <strong>Умови:</strong> замовлення з накладеним платежем відправляються лише після мінімальної передоплати (вартість доставки або частина суми). Доставка Новою Поштою або Укрпоштою по всій Україні.
-            </span>
-            <span data-lang="ru">
-              <strong>Условия:</strong> заказы с наложенным платежом отправляются только после минимальной предоплаты (стоимость доставки или часть суммы). Доставка Новой Почтой или Укрпочтой по всей Украине.
-            </span>
+            <span data-lang="uk" class="active"><strong>Умови:</strong> замовлення з накладеним платежем відправляються лише після мінімальної передоплати. Доставка НП або Укрпоштою по Україні.</span>
+            <span data-lang="ru"><strong>Условия:</strong> заказы с наложенным платежом отправляются только после минимальной предоплаты. Доставка НП или Укрпочтой по Украине.</span>
           </div>
-
           <button type="submit" class="btn btn-primary form-submit">
             <span data-lang="uk" class="active">Надіслати в Telegram</span>
             <span data-lang="ru">Отправить в Telegram</span>
@@ -932,7 +702,6 @@
       </div>
     </section>
 
-    <!-- Contacts -->
     <section id="contacts">
       <div class="container">
         <h2 class="section-title">
@@ -951,39 +720,33 @@
           </a>
           <a href="tel:+380995643468" class="contact-card">
             <div class="icon">📞</div>
-            <div class="label">
-              <span data-lang="uk" class="active">Телефон</span>
-              <span data-lang="ru">Телефон</span>
-            </div>
+            <div class="label"><span data-lang="uk" class="active">Телефон</span><span data-lang="ru">Телефон</span></div>
             <div class="value">099 564 34 68</div>
           </a>
         </div>
-
-        <!-- Payment details -->
-        <div style="margin-top: 48px; max-width: 560px; margin-left: auto; margin-right: auto;">
-          <h3 style="text-align: center; font-size: 18px; font-weight: 600; margin-bottom: 16px;">
+        <div style="margin-top:48px;max-width:560px;margin-left:auto;margin-right:auto">
+          <h3 style="text-align:center;font-size:18px;font-weight:600;margin-bottom:16px">
             <span data-lang="uk" class="active">Реквізити для оплати</span>
             <span data-lang="ru">Реквизиты для оплаты</span>
           </h3>
-          <div style="background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; font-size: 14px; line-height: 1.7;">
-            <div style="margin-bottom: 12px;">
-              <div style="color: var(--muted); font-size: 12px; margin-bottom: 2px;">
-                <span data-lang="uk" class="active">Одержувач</span>
-                <span data-lang="ru">Получатель</span>
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;font-size:14px;line-height:1.7">
+            <div style="margin-bottom:12px">
+              <div style="color:var(--muted);font-size:12px;margin-bottom:2px">
+                <span data-lang="uk" class="active">Одержувач</span><span data-lang="ru">Получатель</span>
               </div>
-              <div style="font-weight: 600;">ФОП Каблучко Олександр Володимирович</div>
+              <div style="font-weight:600">ФОП Каблучко Олександр Володимирович</div>
             </div>
-            <div style="margin-bottom: 12px;">
-              <div style="color: var(--muted); font-size: 12px; margin-bottom: 2px;">IBAN</div>
-              <div style="font-weight: 600; letter-spacing: 0.02em; word-break: break-all;">UA943220010000026008300058607</div>
+            <div style="margin-bottom:12px">
+              <div style="color:var(--muted);font-size:12px;margin-bottom:2px">IBAN</div>
+              <div style="font-weight:600;word-break:break-all">UA943220010000026008300058607</div>
             </div>
             <div>
-              <div style="color: var(--muted); font-size: 12px; margin-bottom: 2px;">ЄДРПОУ</div>
-              <div style="font-weight: 600;">2685315998</div>
+              <div style="color:var(--muted);font-size:12px;margin-bottom:2px">ЄДРПОУ</div>
+              <div style="font-weight:600">2685315998</div>
             </div>
-            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px;">
-              <span data-lang="uk" class="active">У призначенні платежу вкажіть: «Оплата за товар» + ваше ім’я або номер замовлення</span>
-              <span data-lang="ru">В назначении платежа укажите: «Оплата за товар» + ваше имя или номер заказа</span>
+            <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:13px">
+              <span data-lang="uk" class="active">У призначенні: «Оплата за товар» + ім’я</span>
+              <span data-lang="ru">В назначении: «Оплата за товар» + имя</span>
             </div>
           </div>
         </div>
@@ -993,39 +756,94 @@
 
   <footer>
     <div class="container">
-      <p>© 2026 PowerRouter · 
+      <p>© 2026 PowerRouter ·
         <span data-lang="uk" class="active">Безперебійні комплекти для роутера</span>
         <span data-lang="ru">Бесперебойные комплекты для роутера</span>
       </p>
     </div>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+    <button class="lightbox-close" type="button" onclick="closeLightbox()">×</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div class="lightbox-nav">
+      <button type="button" onclick="lightboxNav(-1)">‹</button>
+      <span class="lightbox-counter" id="lightboxCounter">1 / 5</span>
+      <button type="button" onclick="lightboxNav(1)">›</button>
+    </div>
+  </div>
+
   <script>
+    // Lang
     const langBtns = document.querySelectorAll('[data-set-lang]');
     const allLangEls = document.querySelectorAll('[data-lang]');
-
     function setLang(lang) {
-      allLangEls.forEach(el => {
-        el.classList.toggle('active', el.getAttribute('data-lang') === lang);
-      });
-      langBtns.forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-set-lang') === lang);
-      });
+      allLangEls.forEach(el => el.classList.toggle('active', el.getAttribute('data-lang') === lang));
+      langBtns.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-set-lang') === lang));
       document.documentElement.lang = lang === 'uk' ? 'uk' : 'ru';
       localStorage.setItem('lang', lang);
     }
+    langBtns.forEach(btn => btn.addEventListener('click', () => setLang(btn.getAttribute('data-set-lang'))));
+    setLang(localStorage.getItem('lang') || 'uk');
 
-    langBtns.forEach(btn => {
-      btn.addEventListener('click', () => setLang(btn.getAttribute('data-set-lang')));
+    // Galleries
+    const galleryState = { kit20: 0, dc: 0 };
+    const galleryImgs = {
+      kit20: ['kit20-1.jpg','kit20-2.jpg','kit20-3.jpg','kit20-4.jpg','kit20-5.jpg'],
+      dc: ['dc-1.jpg','dc-2.jpg','dc-3.jpg','dc-4.jpg','dc-5.jpg']
+    };
+
+    function goGallery(id, i) {
+      galleryState[id] = i;
+      const root = document.querySelector('[data-gallery="'+id+'"]');
+      if (!root) return;
+      root.querySelectorAll('img').forEach((img, idx) => img.classList.toggle('active', idx === i));
+      root.querySelectorAll('.gallery-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
+    }
+    function slideGallery(id, dir) {
+      const n = galleryImgs[id].length;
+      goGallery(id, (galleryState[id] + dir + n) % n);
+    }
+
+    // Lightbox
+    let lbId = null, lbIdx = 0;
+    function openLightbox(id) {
+      lbId = id; lbIdx = galleryState[id] || 0;
+      document.getElementById('lightbox').classList.add('open');
+      updateLightbox();
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+    function lightboxNav(dir) {
+      const n = galleryImgs[lbId].length;
+      lbIdx = (lbIdx + dir + n) % n;
+      updateLightbox();
+      goGallery(lbId, lbIdx);
+    }
+    function updateLightbox() {
+      document.getElementById('lightboxImg').src = galleryImgs[lbId][lbIdx];
+      document.getElementById('lightboxCounter').textContent = (lbIdx + 1) + ' / ' + galleryImgs[lbId].length;
+    }
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lightboxNav(-1);
+      if (e.key === 'ArrowRight') lightboxNav(1);
     });
 
-    const saved = localStorage.getItem('lang') || 'uk';
-    setLang(saved);
+    function selectProduct(id) {
+      const select = document.getElementById('orderProduct');
+      for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].getAttribute('data-id') === id) {
+          select.selectedIndex = i; break;
+        }
+      }
+    }
 
-    // ===== Nova Poshta через Cloudflare Worker (ключ тільки на сервері) =====
-    // Після деплою воркера встав сюди його URL:
+    // NP API via Cloudflare Worker
     const NP_PROXY_URL = 'https://winter-sun-55c2.crewdocssolution.workers.dev';
-
     async function npRequest(modelName, calledMethod, methodProperties) {
       const res = await fetch(NP_PROXY_URL, {
         method: 'POST',
@@ -1034,164 +852,96 @@
       });
       return res.json();
     }
-
-    let cityTimer = null;
-    let selectedCityRef = '';
-    let warehousesCache = [];
-
-    function setupAutocomplete(inputId, listId, onSelect) {
-      const input = document.getElementById(inputId);
-      const list = document.getElementById(listId);
-      if (!input || !list) return;
-
-      input.addEventListener('blur', () => setTimeout(() => list.classList.remove('open'), 200));
-    }
+    let cityTimer = null, selectedCityRef = '', warehousesCache = [];
 
     function renderList(listEl, items, onPick) {
       listEl.innerHTML = '';
-      if (!items.length) {
-        listEl.classList.remove('open');
-        return;
-      }
-      items.forEach((item) => {
+      if (!items.length) { listEl.classList.remove('open'); return; }
+      items.forEach(item => {
         const div = document.createElement('div');
         div.className = 'ac-item';
         div.textContent = item.label;
-        div.addEventListener('mousedown', (e) => {
-          e.preventDefault();
-          onPick(item);
-          listEl.classList.remove('open');
-        });
+        div.addEventListener('mousedown', e => { e.preventDefault(); onPick(item); listEl.classList.remove('open'); });
         listEl.appendChild(div);
       });
       listEl.classList.add('open');
     }
 
-    document.getElementById('orderCity')?.addEventListener('input', function () {
+    document.getElementById('orderCity')?.addEventListener('input', function() {
       const q = this.value.trim();
       selectedCityRef = '';
       document.getElementById('cityRef').value = '';
       warehousesCache = [];
       document.getElementById('orderBranch').value = '';
       clearTimeout(cityTimer);
-      if (q.length < 2) {
-        document.getElementById('cityList').classList.remove('open');
-        return;
-      }
+      if (q.length < 2) { document.getElementById('cityList').classList.remove('open'); return; }
       cityTimer = setTimeout(async () => {
         try {
           const data = await npRequest('Address', 'searchSettlements', { CityName: q, Limit: '12' });
           const addresses = (data.data && data.data[0] && data.data[0].Addresses) || [];
-          const items = addresses.map(a => ({
-            label: a.Present,
-            ref: a.DeliveryCity,
-            name: a.MainDescription
-          }));
-          renderList(document.getElementById('cityList'), items, (item) => {
+          renderList(document.getElementById('cityList'), addresses.map(a => ({
+            label: a.Present, ref: a.DeliveryCity
+          })), item => {
             document.getElementById('orderCity').value = item.label;
             selectedCityRef = item.ref;
             document.getElementById('cityRef').value = item.ref;
             loadWarehouses(item.ref);
           });
-        } catch (err) {
-          console.warn('NP city search error', err);
-        }
+        } catch (e) { console.warn(e); }
       }, 350);
     });
 
     async function loadWarehouses(cityRef) {
       if (!cityRef) return;
       try {
-        const data = await npRequest('Address', 'getWarehouses', {
-          CityRef: cityRef,
-          Limit: '500'
-        });
+        const data = await npRequest('Address', 'getWarehouses', { CityRef: cityRef, Limit: '500' });
         warehousesCache = (data.data || []).map(w => ({
-          label: w.Description,
-          ref: w.Ref,
-          type: w.CategoryOfWarehouse || w.TypeOfWarehouse || ''
+          label: w.Description, type: w.CategoryOfWarehouse || ''
         }));
-      } catch (err) {
-        console.warn('NP warehouses error', err);
-        warehousesCache = [];
-      }
+      } catch (e) { warehousesCache = []; }
     }
 
     function filterWarehouses(query) {
       const npType = document.getElementById('npType')?.value || 'Відділення';
       let list = warehousesCache;
-      if (npType === 'Поштомат') {
-        list = list.filter(w => /поштомат|Postomat|parcel/i.test(w.label + ' ' + w.type));
-      } else if (npType === 'Відділення') {
-        list = list.filter(w => !/поштомат|Postomat/i.test(w.label));
-      }
+      if (npType === 'Поштомат') list = list.filter(w => /поштомат|Postomat/i.test(w.label + w.type));
+      else if (npType === 'Відділення') list = list.filter(w => !/поштомат|Postomat/i.test(w.label));
       const q = (query || '').toLowerCase();
       if (q) list = list.filter(w => w.label.toLowerCase().includes(q));
       return list.slice(0, 40);
     }
 
-    document.getElementById('orderBranch')?.addEventListener('focus', function () {
+    document.getElementById('orderBranch')?.addEventListener('focus', function() {
       if (!selectedCityRef && !document.getElementById('cityRef').value) return;
-      const items = filterWarehouses(this.value).map(w => ({ label: w.label, ref: w.ref }));
-      renderList(document.getElementById('branchList'), items, (item) => {
+      renderList(document.getElementById('branchList'), filterWarehouses(this.value).map(w => ({label:w.label})), item => {
         document.getElementById('orderBranch').value = item.label;
       });
     });
-
-    document.getElementById('orderBranch')?.addEventListener('input', function () {
-      const items = filterWarehouses(this.value).map(w => ({ label: w.label, ref: w.ref }));
-      renderList(document.getElementById('branchList'), items, (item) => {
+    document.getElementById('orderBranch')?.addEventListener('input', function() {
+      renderList(document.getElementById('branchList'), filterWarehouses(this.value).map(w => ({label:w.label})), item => {
         document.getElementById('orderBranch').value = item.label;
       });
     });
-
-    document.getElementById('npType')?.addEventListener('change', function () {
-      document.getElementById('orderBranch').value = '';
-      updateAddressFields();
-    });
-
-    // Pre-select product in form when clicking "Замовити"
-    function selectProduct(id) {
-      const select = document.getElementById('orderProduct');
-      if (!select) return;
-      for (let i = 0; i < select.options.length; i++) {
-        if (select.options[i].getAttribute('data-id') === id) {
-          select.selectedIndex = i;
-          break;
-        }
-      }
-    }
 
     function toggleDelivery() {
       const delivery = document.querySelector('input[name="delivery"]:checked');
       const npExtra = document.getElementById('npExtra');
-      if (!delivery || !npExtra) return;
-      if (delivery.value === 'Нова Пошта') {
-        npExtra.classList.add('active');
-      } else {
-        npExtra.classList.remove('active');
-      }
+      if (delivery && delivery.value === 'Нова Пошта') npExtra.classList.add('active');
+      else npExtra.classList.remove('active');
       updateAddressFields();
     }
-
     function updateAddressFields() {
       const npType = document.getElementById('npType');
-      const branchGroup = document.getElementById('branchGroup');
-      const addressGroup = document.getElementById('addressGroup');
       const delivery = document.querySelector('input[name="delivery"]:checked');
-      if (!branchGroup || !addressGroup) return;
-
       const isAddress = delivery && delivery.value === 'Нова Пошта' && npType && npType.value === 'Адресна доставка';
-      if (isAddress) {
-        branchGroup.style.display = 'none';
-        addressGroup.style.display = 'block';
-      } else {
-        branchGroup.style.display = 'block';
-        addressGroup.style.display = 'none';
-      }
+      document.getElementById('branchGroup').style.display = isAddress ? 'none' : 'block';
+      document.getElementById('addressGroup').style.display = isAddress ? 'block' : 'none';
     }
+    document.getElementById('npType')?.addEventListener('change', function() {
+      document.getElementById('orderBranch').value = '';
+      updateAddressFields();
+    });
 
-    // Order form → Telegram
     function sendOrder(e) {
       e.preventDefault();
       const name = document.getElementById('orderName').value.trim();
@@ -1204,7 +954,6 @@
       const branch = document.getElementById('orderBranch').value.trim();
       const address = document.getElementById('orderAddress').value.trim();
       const comment = document.getElementById('orderComment').value.trim();
-
       if (!name || !phone || !product || !city) return false;
 
       let text = '🛒 *Нове замовлення*%0A%0A';
@@ -1213,21 +962,13 @@
       text += '📦 Товар: ' + encodeURIComponent(product) + '%0A';
       text += '💳 Оплата: ' + encodeURIComponent(payment) + '%0A';
       text += '🚚 Доставка: ' + encodeURIComponent(delivery) + '%0A';
-      if (delivery === 'Нова Пошта' && npType) {
-        text += '📍 Тип НП: ' + encodeURIComponent(npType) + '%0A';
-      }
+      if (delivery === 'Нова Пошта' && npType) text += '📍 Тип НП: ' + encodeURIComponent(npType) + '%0A';
       text += '🏙 Місто: ' + encodeURIComponent(city) + '%0A';
-      if (npType === 'Адресна доставка' && address) {
-        text += '🏠 Адреса: ' + encodeURIComponent(address) + '%0A';
-      } else if (branch) {
-        text += '🏢 Відділення: ' + encodeURIComponent(branch) + '%0A';
-      }
-      if (comment) {
-        text += '💬 Коментар: ' + encodeURIComponent(comment) + '%0A';
-      }
+      if (npType === 'Адресна доставка' && address) text += '🏠 Адреса: ' + encodeURIComponent(address) + '%0A';
+      else if (branch) text += '🏢 Відділення: ' + encodeURIComponent(branch) + '%0A';
+      if (comment) text += '💬 Коментар: ' + encodeURIComponent(comment) + '%0A';
 
-      const url = 'https://t.me/+380995643468?text=' + text;
-      window.open(url, '_blank');
+      window.open('https://t.me/+380995643468?text=' + text, '_blank');
       return false;
     }
   </script>
