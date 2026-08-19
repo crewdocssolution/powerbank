@@ -304,6 +304,11 @@
     "@type": "Organization",
     "name": "PowerRouter",
     "url": "https://ваш-домен.com.ua",
+    "address": {
+      "@type": "PostalAddress",
+      "name": "Торговий комплекс Нове Місто",
+      "addressCountry": "UA"
+    },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+380995643468",
@@ -369,6 +374,7 @@
         <a href="#benefits"><span data-lang="uk" class="active">Переваги</span><span data-lang="ru">Преимущества</span></a>
         <a href="#products"><span data-lang="uk" class="active">Комплекти</span><span data-lang="ru">Комплекты</span></a>
         <a href="#how"><span data-lang="uk" class="active">Як працює</span><span data-lang="ru">Как работает</span></a>
+        <a href="#policies"><span data-lang="uk" class="active">Умови</span><span data-lang="ru">Условия</span></a>
         <a href="#contacts"><span data-lang="uk" class="active">Контакти</span><span data-lang="ru">Контакты</span></a>
       </nav>
       <div class="lang-switch">
@@ -690,15 +696,96 @@
             <label><span data-lang="uk" class="active">Коментар</span><span data-lang="ru">Комментарий</span></label>
             <textarea id="orderComment" placeholder="Побажання..."></textarea>
           </div>
-          <div class="form-terms">
-            <span data-lang="uk" class="active"><strong>Умови:</strong> замовлення з накладеним платежем відправляються лише після мінімальної передоплати. Доставка НП або Укрпоштою по Україні.</span>
-            <span data-lang="ru"><strong>Условия:</strong> заказы с наложенным платежом отправляются только после минимальной предоплаты. Доставка НП или Укрпочтой по Украине.</span>
+          <div class="form-terms" id="formTerms">
+            <span data-lang="uk" class="active"><strong>Умови:</strong> накладений платіж — лише Нова Пошта і лише після мінімальної передоплати. <strong>Укрпошта — тільки після повної передоплати</strong> на рахунок.</span>
+            <span data-lang="ru"><strong>Условия:</strong> наложенный платёж — только Новая Почта и только после минимальной предоплаты. <strong>Укрпочта — только после полной предоплаты</strong> на счёт.</span>
           </div>
           <button type="submit" class="btn btn-primary form-submit">
             <span data-lang="uk" class="active">Надіслати в Telegram</span>
             <span data-lang="ru">Отправить в Telegram</span>
           </button>
         </form>
+      </div>
+    </section>
+
+    <!-- Policies -->
+    <section id="policies">
+      <div class="container">
+        <h2 class="section-title">
+          <span data-lang="uk" class="active">Оплата, доставка та повернення</span>
+          <span data-lang="ru">Оплата, доставка и возврат</span>
+        </h2>
+        <p class="section-sub">
+          <span data-lang="uk" class="active">Прозорі умови перед замовленням</span>
+          <span data-lang="ru">Прозрачные условия перед заказом</span>
+        </p>
+        <div class="benefits-grid">
+          <div class="benefit-card" id="payment-policy">
+            <div class="benefit-icon">💳</div>
+            <h3>
+              <span data-lang="uk" class="active">Оплата</span>
+              <span data-lang="ru">Оплата</span>
+            </h3>
+            <p>
+              <span data-lang="uk" class="active">
+                • Переказ на рахунок ФОП (повна або часткова передоплата)<br>
+                • Накладений платіж — лише Нова Пошта, після мінімальної передоплати (вартість доставки або частина суми)<br>
+                • Укрпошта — <strong style="color:var(--accent)">тільки після повної передоплати</strong>
+              </span>
+              <span data-lang="ru">
+                • Перевод на счёт ФОП (полная или частичная предоплата)<br>
+                • Наложенный платёж — только Новая Почта, после минимальной предоплаты<br>
+                • Укрпочта — <strong style="color:var(--accent)">только после полной предоплаты</strong>
+              </span>
+            </p>
+          </div>
+          <div class="benefit-card" id="shipping-policy">
+            <div class="benefit-icon">🚚</div>
+            <h3>
+              <span data-lang="uk" class="active">Доставка</span>
+              <span data-lang="ru">Доставка</span>
+            </h3>
+            <p>
+              <span data-lang="uk" class="active">
+                • Нова Пошта: відділення, поштомат, адресна доставка по всій Україні<br>
+                • Укрпошта: відділення (лише після повної передоплати)<br>
+                • Відправка: 1–2 робочі дні після підтвердження оплати<br>
+                • Термін доставки: зазвичай 1–3 дні (залежить від перевізника та міста)<br>
+                • Вартість доставки: за тарифами перевізника, оплачує отримувач (або за домовленістю)
+              </span>
+              <span data-lang="ru">
+                • Новая Почта: отделение, почтомат, адресная доставка по всей Украине<br>
+                • Укрпочта: отделение (только после полной предоплаты)<br>
+                • Отправка: 1–2 рабочих дня после подтверждения оплаты<br>
+                • Срок доставки: обычно 1–3 дня<br>
+                • Стоимость: по тарифам перевозчика, оплачивает получатель (или по договорённости)
+              </span>
+            </p>
+          </div>
+          <div class="benefit-card" id="return-policy">
+            <div class="benefit-icon">↩️</div>
+            <h3>
+              <span data-lang="uk" class="active">Повернення та обмін</span>
+              <span data-lang="ru">Возврат и обмен</span>
+            </h3>
+            <p>
+              <span data-lang="uk" class="active">
+                • Обмін/повернення товару належної якості — протягом <strong style="color:var(--accent)">14 днів</strong> з моменту отримання (Закон України «Про захист прав споживачів»)<br>
+                • Товар не був у використанні, збережено товарний вигляд, упаковку та комплектацію<br>
+                • Для повернення напишіть у Telegram або зателефонуйте — погодимо спосіб<br>
+                • Повернення коштів: на картку/рахунок протягом 3–7 робочих днів після отримання товару назад<br>
+                • Доставка при поверненні за домовленістю (зазвичай за рахунок покупця, окрім браку)
+              </span>
+              <span data-lang="ru">
+                • Обмен/возврат товара надлежащего качества — в течение <strong style="color:var(--accent)">14 дней</strong> с момента получения<br>
+                • Товар не использовался, сохранён товарный вид, упаковка и комплектация<br>
+                • Для возврата напишите в Telegram или позвоните<br>
+                • Возврат средств: 3–7 рабочих дней после получения товара обратно<br>
+                • Доставка при возврате по договорённости (обычно за счёт покупателя, кроме брака)
+              </span>
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -722,6 +809,11 @@
             <div class="icon">📞</div>
             <div class="label"><span data-lang="uk" class="active">Телефон</span><span data-lang="ru">Телефон</span></div>
             <div class="value">099 564 34 68</div>
+          </a>
+          <a href="https://maps.google.com/maps?ftid=0x40c632874e842373:0xf962cde12142e9c4" class="contact-card" target="_blank" rel="noopener">
+            <div class="icon">📍</div>
+            <div class="label"><span data-lang="uk" class="active">Адреса</span><span data-lang="ru">Адрес</span></div>
+            <div class="value">ТК «Нове Місто»</div>
           </a>
         </div>
         <div style="margin-top:48px;max-width:560px;margin-left:auto;margin-right:auto">
@@ -756,7 +848,22 @@
 
   <footer>
     <div class="container">
-      <p>© 2026 PowerRouter ·
+      <p style="margin-bottom:12px">
+        <a href="#payment-policy" style="color:var(--muted);margin:0 8px;text-decoration:none;font-size:13px">
+          <span data-lang="uk" class="active">Оплата</span><span data-lang="ru">Оплата</span>
+        </a>
+        <a href="#shipping-policy" style="color:var(--muted);margin:0 8px;text-decoration:none;font-size:13px">
+          <span data-lang="uk" class="active">Доставка</span><span data-lang="ru">Доставка</span>
+        </a>
+        <a href="#return-policy" style="color:var(--muted);margin:0 8px;text-decoration:none;font-size:13px">
+          <span data-lang="uk" class="active">Повернення</span><span data-lang="ru">Возврат</span>
+        </a>
+        <a href="#contacts" style="color:var(--muted);margin:0 8px;text-decoration:none;font-size:13px">
+          <span data-lang="uk" class="active">Контакти</span><span data-lang="ru">Контакты</span>
+        </a>
+      </p>
+      <p>© 2026 PowerRouter · ФОП Каблучко Олександр Володимирович · ЄДРПОУ 2685315998
+        <br>
         <span data-lang="uk" class="active">Безперебійні комплекти для роутера</span>
         <span data-lang="ru">Бесперебойные комплекты для роутера</span>
       </p>
@@ -925,11 +1032,57 @@
 
     function toggleDelivery() {
       const delivery = document.querySelector('input[name="delivery"]:checked');
+      const payment = document.querySelector('input[name="payment"]:checked');
       const npExtra = document.getElementById('npExtra');
       if (delivery && delivery.value === 'Нова Пошта') npExtra.classList.add('active');
       else npExtra.classList.remove('active');
+
+      // Укрпошта — тільки повна передоплата
+      if (delivery && delivery.value === 'Укрпошта') {
+        const bank = document.querySelector('input[name="payment"][value="На рахунок"]');
+        const cod = document.querySelector('input[name="payment"][value="Накладений платіж"]');
+        if (bank) bank.checked = true;
+        if (cod) {
+          cod.disabled = true;
+          cod.parentElement.style.opacity = '0.45';
+          cod.parentElement.style.pointerEvents = 'none';
+        }
+      } else {
+        const cod = document.querySelector('input[name="payment"][value="Накладений платіж"]');
+        if (cod) {
+          cod.disabled = false;
+          cod.parentElement.style.opacity = '1';
+          cod.parentElement.style.pointerEvents = '';
+        }
+      }
       updateAddressFields();
     }
+
+    document.querySelectorAll('input[name="payment"]').forEach(el => {
+      el.addEventListener('change', () => {
+        const payment = document.querySelector('input[name="payment"]:checked');
+        const delivery = document.querySelector('input[name="delivery"]:checked');
+        // якщо обрали накладний — Укрпошта недоступна
+        if (payment && payment.value === 'Накладений платіж') {
+          const np = document.querySelector('input[name="delivery"][value="Нова Пошта"]');
+          const ukr = document.querySelector('input[name="delivery"][value="Укрпошта"]');
+          if (np) np.checked = true;
+          if (ukr) {
+            ukr.disabled = true;
+            ukr.parentElement.style.opacity = '0.45';
+            ukr.parentElement.style.pointerEvents = 'none';
+          }
+          toggleDelivery();
+        } else {
+          const ukr = document.querySelector('input[name="delivery"][value="Укрпошта"]');
+          if (ukr) {
+            ukr.disabled = false;
+            ukr.parentElement.style.opacity = '1';
+            ukr.parentElement.style.pointerEvents = '';
+          }
+        }
+      });
+    });
     function updateAddressFields() {
       const npType = document.getElementById('npType');
       const delivery = document.querySelector('input[name="delivery"]:checked');
