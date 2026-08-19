@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Безперебійні комплекти для роутера | Power Router</title>
+  <meta name="description" content="Безперебійне живлення для роутера та GPON під час відключень світла. Комплекти PowerBank + DC блок з наскрізною зарядкою. Інтернет 24/7.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #111215;
+      --text: #F5F5F7;
+      --muted: #86868B;
+      --accent: #C5A880;
+      --accent-hover: #D4BC9A;
+      --border: #2A2A2E;
+      --card: #18181B;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(17, 18, 21, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .logo {
+      font-weight: 700; font-size: 18px; letter-spacing: -0.02em;
+      color: var(--text); text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    nav { display: flex; gap: 28px; align-items: center; }
+    nav a {
+      color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); }
+    .lang-switch {
+      display: flex; gap: 4px; background: var(--card);
+      border-radius: 6px; padding: 3px; border: 1px solid var(--border);
+    }
+    .lang-btn {
+      padding: 4px 10px; font-size: 12px; font-weight: 600;
+      border: none; background: transparent; color: var(--muted);
+      cursor: pointer; border-radius: 4px; transition: all 0.2s;
+    }
+    .lang-btn.active { background: var(--accent); color: #111215; }
+
+    /* Hero */
+    .hero { padding: 140px 0 80px; text-align: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(197, 168, 128, 0.12); color: var(--accent);
+      font-size: 13px; font-weight: 600; padding: 6px 14px;
+      border-radius: 100px; margin-bottom: 24px;
+      border: 1px solid rgba(197, 168, 128, 0.25);
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px); font-weight: 700;
+      letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px;
+      max-width: 720px; margin-left: auto; margin-right: auto;
+    }
+    .hero p {
+      font-size: 18px; color: var(--muted); max-width: 540px;
+      margin: 0 auto 36px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 28px; font-size: 15px; font-weight: 600;
+      border-radius: 10px; text-decoration: none; transition: all 0.2s;
+      cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--accent); color: #111215; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--text); border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--muted); background: rgba(255,255,255,0.03); }
+    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero-image { margin-top: 60px; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .hero-image img { width: 100%; height: auto; border-radius: 16px; }
+
+    /* Sections */
+    section { padding: 80px 0; }
+    .section-title {
+      font-size: clamp(26px, 4vw, 36px); font-weight: 700;
+      letter-spacing: -0.02em; text-align: center; margin-bottom: 12px;
+    }
+    .section-sub {
+      text-align: center; color: var(--muted); max-width: 520px;
+      margin: 0 auto 48px; font-size: 16px;
+    }
+
+    /* Benefits */
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
+    }
+    .benefit-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px 24px; transition: border-color 0.2s;
+    }
+    .benefit-card:hover { border-color: rgba(197, 168, 128, 0.35); }
+    .benefit-icon {
+      width: 44px; height: 44px; background: rgba(197, 168, 128, 0.12);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 16px; color: var(--accent);
+    }
+    .benefit-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+    .benefit-card p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+    /* Products */
+    .products-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+    }
+    .product-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-4px); border-color: rgba(197, 168, 128, 0.4);
+    }
+    .product-img {
+      aspect-ratio: 1; background: #0D0D0F;
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+    }
+    .product-img img {
+      max-width: 100%; max-height: 260px; object-fit: contain;
+    }
+    .product-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .product-body h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+    .product-price {
+      font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 10px;
+    }
+    .product-body p {
+      font-size: 14px; color: var(--muted); margin-bottom: 16px; line-height: 1.5; flex: 1;
+    }
+    .product-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .tag {
+      font-size: 12px; font-weight: 500; padding: 4px 10px;
+      background: rgba(197, 168, 128, 0.1); color: var(--accent); border-radius: 6px;
+    }
+    .tag.muted {
+      background: rgba(134, 134, 139, 0.15); color: var(--muted);
+    }
+
+    /* How it works */
+    .scheme-wrap {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 24px; overflow: hidden;
+    }
+    .scheme-wrap img { width: 100%; height: auto; border-radius: 12px; }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      background: linear-gradient(180deg, transparent, rgba(197, 168, 128, 0.06));
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .cta-section h2 { font-size: clamp(24px, 4vw, 32px); margin-bottom: 12px; }
+    .cta-section p { color: var(--muted); margin-bottom: 28px; }
+
+    /* Contacts */
+    .contacts-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; max-width: 700px; margin: 0 auto;
+    }
+    .contact-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px; text-align: center;
+      text-decoration: none; color: var(--text); transition: border-color 0.2s;
+    }
+    .contact-card:hover { border-color: var(--accent); }
+    .contact-card .icon { font-size: 28px; margin-bottom: 10px; }
+    .contact-card .label { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+    .contact-card .value { font-weight: 600; font-size: 15px; }
+
+    footer {
+      padding: 40px 0; border-top: 1px solid var(--border);
+      text-align: center; color: var(--muted); font-size: 13px;
+    }
+
+    [data-lang] { display: none; }
+    [data-lang].active { display: block; }
+    span[data-lang].active { display: inline; }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hero { padding: 110px 0 60px; }
+      section { padding: 60px 0; }
+    }
+  </style>
+
+  <!-- Structured data for Google Merchant / Shopping -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PowerRouter",
+    "url": "https://ваш-домен.com.ua",
+    "logo": "https://ваш-домен.com.ua/images/hoco-j86.jpg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+380995643468",
+      "contactType": "customer service",
+      "availableLanguage": ["Ukrainian", "Russian"]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Product",
+          "name": "Комплект 20 000 mAh — PowerBank + DC-блок для роутера",
+          "image": "https://ваш-домен.com.ua/images/powerbank-20k.jpg",
+          "description": "Збірний комплект: PowerBank 20 000 mAh з наскрізною зарядкою + DC-блок 5/9/12V + 2 кабелі. Безперебійне живлення роутера та GPON під час відключень світла.",
+          "sku": "KIT-20K",
+          "brand": { "@type": "Brand", "name": "PowerRouter" },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ваш-домен.com.ua/#products",
+            "priceCurrency": "UAH",
+            "price": "1690",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": { "@type": "Organization", "name": "ФОП Каблучко Олександр Володимирович" }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Product",
+          "name": "Комплект 10 000 mAh — PowerBank + DC-блок для роутера",
+          "image": "https://ваш-домен.com.ua/images/scheme.jpg",
+          "description": "Заводський набір: PowerBank 10 000 mAh з наскрізною зарядкою + DC-блок + кабелі. Компактне безперебійне живлення для роутера.",
+          "sku": "KIT-10K",
+          "brand": { "@type": "Brand", "name": "PowerRouter" },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ваш-домен.com.ua/#products",
+            "priceCurrency": "UAH",
+            "price": "1690",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": { "@type": "Organization", "name": "ФОП Каблучко Олександр Володимирович" }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Product",
+          "name": "Hoco J86 PowerBank 40000 mAh",
+          "image": "https://ваш-домен.com.ua/images/hoco-j86.jpg",
+          "description": "Hoco J86 40000 mAh з дисплеєм, 22.5W PD/QC, наскрізна зарядка. Для роутера та телефонів.",
+          "sku": "HOCO-J86",
+          "brand": { "@type": "Brand", "name": "Hoco" },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ваш-домен.com.ua/#products",
+            "priceCurrency": "UAH",
+            "price": "1990",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": { "@type": "Organization", "name": "ФОП Каблучко Олександр Володимирович" }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Product",
+          "name": "Hoco J86A PowerBank 50000 mAh",
+          "image": "https://ваш-домен.com.ua/images/hoco-j86a.jpg",
+          "description": "Hoco J86A 50000 mAh, 22.5W, наскрізна зарядка. Збільшена ємність для довшої автономної роботи роутера.",
+          "sku": "HOCO-J86A",
+          "brand": { "@type": "Brand", "name": "Hoco" },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ваш-домен.com.ua/#products",
+            "priceCurrency": "UAH",
+            "price": "2150",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": { "@type": "Organization", "name": "ФОП Каблучко Олександр Володимирович" }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Product",
+          "name": "Hoco J86B PowerBank 60000 mAh",
+          "image": "https://ваш-домен.com.ua/images/hoco-j86b.jpg",
+          "description": "Hoco J86B 60000 mAh (222 Wh), максимальна ємність для роутера та кількох пристроїв.",
+          "sku": "HOCO-J86B",
+          "brand": { "@type": "Brand", "name": "Hoco" },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ваш-домен.com.ua/#products",
+            "priceCurrency": "UAH",
+            "price": "2490",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": { "@type": "Organization", "name": "ФОП Каблучко Олександр Володимирович" }
+          }
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo">Power<span>Router</span></a>
+      <nav>
+        <a href="#benefits"><span data-lang="uk" class="active">Переваги</span><span data-lang="ru">Преимущества</span></a>
+        <a href="#products"><span data-lang="uk" class="active">Комплекти</span><span data-lang="ru">Комплекты</span></a>
+        <a href="#how"><span data-lang="uk" class="active">Як працює</span><span data-lang="ru">Как работает</span></a>
+        <a href="#contacts"><span data-lang="uk" class="active">Контакти</span><span data-lang="ru">Контакты</span></a>
+      </nav>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-set-lang="uk">UA</button>
+        <button class="lang-btn" data-set-lang="ru">RU</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">
+          <span>⚡</span>
+          <span data-lang="uk" class="active">Інтернет навіть без світла</span>
+          <span data-lang="ru">Интернет даже без света</span>
+        </div>
+        <h1>
+          <span data-lang="uk" class="active">Безперебійні комплекти<br>для роутера та GPON</span>
+          <span data-lang="ru">Бесперебойные комплекты<br>для роутера и GPON</span>
+        </h1>
+        <p>
+          <span data-lang="uk" class="active">PowerBank з наскрізною зарядкою + DC-блок. Підключив один раз — інтернет працює 10–30+ годин під час відключень.</span>
+          <span data-lang="ru">PowerBank с сквозной зарядкой + DC-блок. Подключил один раз — интернет работает 10–30+ часов во время отключений.</span>
+        </p>
+        <div class="hero-buttons">
+          <a href="#contacts" class="btn btn-primary">
+            <span data-lang="uk" class="active">Замовити комплект</span>
+            <span data-lang="ru">Заказать комплект</span>
+          </a>
+          <a href="#products" class="btn btn-secondary">
+            <span data-lang="uk" class="active">Дивитися ціни</span>
+            <span data-lang="ru">Смотреть цены</span>
+          </a>
+        </div>
+        <div class="hero-image">
+          <img src="images/hoco-j86.jpg" alt="Hoco PowerBank для роутера" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits">
+      <div class="container">
+        <h2 class="section-title">
+          <span data-lang="uk" class="active">Чому це працює</span>
+          <span data-lang="ru">Почему это работает</span>
+        </h2>
+        <p class="section-sub">
+          <span data-lang="uk" class="active">Спеціально зібрані комплекти під українські реалії відключень</span>
+          <span data-lang="ru">Специально собранные комплекты под украинские реалии отключений</span>
+        </p>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">🔌</div>
+            <h3>
+              <span data-lang="uk" class="active">Наскрізна зарядка</span>
+              <span data-lang="ru">Сквозная зарядка</span>
+            </h3>
+            <p>
+              <span data-lang="uk" class="active">Можна одночасно заряджати PowerBank від мережі і живити роутер. Без перерв.</span>
+              <span data-lang="ru">Можно одновременно заряжать PowerBank от сети и питать роутер. Без перерывов.</span>
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">⚡</div>
+            <h3>
+              <span data-lang="uk" class="active">Автоматичне перемикання</span>
+              <span data-lang="ru">Автоматическое переключение</span>
+            </h3>
+            <p>
+              <span data-lang="uk" class="active">DC-блок миттєво переходить на акумулятор при зникненні 220В. Роутер не перезавантажується.</span>
+              <span data-lang="ru">DC-блок мгновенно переходит на аккумулятор при пропадании 220В. Роутер не перезагружается.</span>
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">📡</div>
+            <h3>
+              <span data-lang="uk" class="active">Для будь-якого роутера</span>
+              <span data-lang="ru">Для любого роутера</span>
+            </h3>
+            <p>
+              <span data-lang="uk" class="active">5V / 9V / 12V виходи. Підходить для більшості роутерів, GPON-терміналів та модемів.</span>
+              <span data-lang="ru">5V / 9V / 12V выходы. Подходит для большинства роутеров, GPON-терминалов и модемов.</span>
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">⏱️</div>
+            <h3>
+              <span data-lang="uk" class="active">10–30+ годин роботи</span>
+              <span data-lang="ru">10–30+ часов работы</span>
+            </h3>
+            <p>
+              <span data-lang="uk" class="active">Залежно від ємності PowerBank і споживання вашого обладнання.</span>
+              <span data-lang="ru">В зависимости от ёмкости PowerBank и потребления вашего оборудования.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products">
+      <div class="container">
+        <h2 class="section-title">
+          <span data-lang="uk" class="active">Комплекти та PowerBank</span>
+          <span data-lang="ru">Комплекты и PowerBank</span>
+        </h2>
+        <p class="section-sub">
+          <span data-lang="uk" class="active">Усі PowerBank з наскрізною зарядкою. Ціни актуальні.</span>
+          <span data-lang="ru">Все PowerBank со сквозной зарядкой. Цены актуальные.</span>
+        </p>
+        <div class="products-grid">
+
+          <!-- Комплект 20k -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="images/powerbank-20k.jpg" alt="Комплект 20 000 mAh" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>
+                <span data-lang="uk" class="active">Комплект 20 000 mAh</span>
+                <span data-lang="ru">Комплект 20 000 mAh</span>
+              </h3>
+              <div class="product-price">1 690 ₴</div>
+              <p>
+                <span data-lang="uk" class="active">Збірний комплект: PowerBank 20 000 mAh + DC-блок + 2 кабелі. Оптимальний варіант для більшості роутерів.</span>
+                <span data-lang="ru">Сборный комплект: PowerBank 20 000 mAh + DC-блок + 2 кабеля. Оптимальный вариант для большинства роутеров.</span>
+              </p>
+              <div class="product-tags">
+                <span class="tag">20 000 mAh</span>
+                <span class="tag">Наскрізна зарядка</span>
+                <span class="tag muted">Збірний</span>
+              </div>
+              <a href="#contacts" class="btn btn-primary" style="width:100%">
+                <span data-lang="uk" class="active">Замовити</span>
+                <span data-lang="ru">Заказать</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Комплект 10k -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="images/scheme.jpg" alt="Комплект 10 000 mAh" loading="lazy" style="max-height:220px">
+            </div>
+            <div class="product-body">
+              <h3>
+                <span data-lang="uk" class="active">Комплект 10 000 mAh</span>
+                <span data-lang="ru">Комплект 10 000 mAh</span>
+              </h3>
+              <div class="product-price">1 690 ₴</div>
+              <p>
+                <span data-lang="uk" class="active">Заводський набір: PowerBank 10 000 mAh + DC-блок + кабелі. Компактний і надійний варіант.</span>
+                <span data-lang="ru">Заводской набор: PowerBank 10 000 mAh + DC-блок + кабели. Компактный и надёжный вариант.</span>
+              </p>
+              <div class="product-tags">
+                <span class="tag">10 000 mAh</span>
+                <span class="tag">Наскрізна зарядка</span>
+                <span class="tag muted">Заводський</span>
+              </div>
+              <a href="#contacts" class="btn btn-primary" style="width:100%">
+                <span data-lang="uk" class="active">Замовити</span>
+                <span data-lang="ru">Заказать</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hoco J86 -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="images/hoco-j86.jpg" alt="Hoco J86 40000 mAh" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Hoco J86 · 40 000 mAh</h3>
+              <div class="product-price">1 990 ₴</div>
+              <p>
+                <span data-lang="uk" class="active">Потужний PowerBank з дисплеєм і ремінцем. Підходить для роутера + телефонів. 22.5W швидка зарядка.</span>
+                <span data-lang="ru">Мощный PowerBank с дисплеем и ремешком. Подходит для роутера + телефонов. 22.5W быстрая зарядка.</span>
+              </p>
+              <div class="product-tags">
+                <span class="tag">40 000 mAh</span>
+                <span class="tag">22.5W</span>
+                <span class="tag">PD / QC</span>
+              </div>
+              <a href="#contacts" class="btn btn-primary" style="width:100%">
+                <span data-lang="uk" class="active">Замовити</span>
+                <span data-lang="ru">Заказать</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hoco J86A -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="images/hoco-j86a.jpg" alt="Hoco J86A 50000 mAh" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Hoco J86A · 50 000 mAh</h3>
+              <div class="product-price">2 150 ₴</div>
+              <p>
+                <span data-lang="uk" class="active">Збільшена ємність у тому ж форм-факторі. Ідеально, якщо потрібно більше годин автономної роботи.</span>
+                <span data-lang="ru">Увеличенная ёмкость в том же форм-факторе. Идеально, если нужно больше часов автономной работы.</span>
+              </p>
+              <div class="product-tags">
+                <span class="tag">50 000 mAh</span>
+                <span class="tag">22.5W</span>
+                <span class="tag">PD / QC</span>
+              </div>
+              <a href="#contacts" class="btn btn-primary" style="width:100%">
+                <span data-lang="uk" class="active">Замовити</span>
+                <span data-lang="ru">Заказать</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hoco J86B -->
+          <div class="product-card">
+            <div class="product-img">
+              <img src="images/hoco-j86b.jpg" alt="Hoco J86B 60000 mAh" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Hoco J86B · 60 000 mAh</h3>
+              <div class="product-price">2 490 ₴</div>
+              <p>
+                <span data-lang="uk" class="active">Максимальна ємність. Найдовша автономна робота для роутера та кількох пристроїв одночасно.</span>
+                <span data-lang="ru">Максимальная ёмкость. Самая долгая автономная работа для роутера и нескольких устройств одновременно.</span>
+              </p>
+              <div class="product-tags">
+                <span class="tag">60 000 mAh</span>
+                <span class="tag">222 Wh</span>
+                <span class="tag">PD 20W</span>
+              </div>
+              <a href="#contacts" class="btn btn-primary" style="width:100%">
+                <span data-lang="uk" class="active">Замовити</span>
+                <span data-lang="ru">Заказать</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how">
+      <div class="container">
+        <h2 class="section-title">
+          <span data-lang="uk" class="active">Як це працює</span>
+          <span data-lang="ru">Как это работает</span>
+        </h2>
+        <p class="section-sub">
+          <span data-lang="uk" class="active">Одна проста схема — і інтернет більше не залежить від світла</span>
+          <span data-lang="ru">Одна простая схема — и интернет больше не зависит от света</span>
+        </p>
+        <div class="scheme-wrap">
+          <img src="images/scheme.jpg" alt="Схема підключення безперебійника до роутера" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>
+          <span data-lang="uk" class="active">Готові більше не залишатися без інтернету?</span>
+          <span data-lang="ru">Готовы больше не оставаться без интернета?</span>
+        </h2>
+        <p>
+          <span data-lang="uk" class="active">Напишіть нам — підберемо оптимальний комплект під ваш роутер</span>
+          <span data-lang="ru">Напишите нам — подберём оптимальный комплект под ваш роутер</span>
+        </p>
+        <a href="#contacts" class="btn btn-primary">
+          <span data-lang="uk" class="active">Написати зараз</span>
+          <span data-lang="ru">Написать сейчас</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Contacts -->
+    <section id="contacts">
+      <div class="container">
+        <h2 class="section-title">
+          <span data-lang="uk" class="active">Контакти</span>
+          <span data-lang="ru">Контакты</span>
+        </h2>
+        <p class="section-sub">
+          <span data-lang="uk" class="active">Оберіть зручний спосіб зв’язку. Відповідаємо швидко.</span>
+          <span data-lang="ru">Выберите удобный способ связи. Отвечаем быстро.</span>
+        </p>
+        <div class="contacts-grid">
+          <a href="https://t.me/+380995643468" class="contact-card" target="_blank" rel="noopener">
+            <div class="icon">✈️</div>
+            <div class="label">Telegram</div>
+            <div class="value">099 564 34 68</div>
+          </a>
+          <a href="tel:+380995643468" class="contact-card">
+            <div class="icon">📞</div>
+            <div class="label">
+              <span data-lang="uk" class="active">Телефон</span>
+              <span data-lang="ru">Телефон</span>
+            </div>
+            <div class="value">099 564 34 68</div>
+          </a>
+        </div>
+
+        <!-- Payment details -->
+        <div style="margin-top: 48px; max-width: 560px; margin-left: auto; margin-right: auto;">
+          <h3 style="text-align: center; font-size: 18px; font-weight: 600; margin-bottom: 16px;">
+            <span data-lang="uk" class="active">Реквізити для оплати</span>
+            <span data-lang="ru">Реквизиты для оплаты</span>
+          </h3>
+          <div style="background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; font-size: 14px; line-height: 1.7;">
+            <div style="margin-bottom: 12px;">
+              <div style="color: var(--muted); font-size: 12px; margin-bottom: 2px;">
+                <span data-lang="uk" class="active">Одержувач</span>
+                <span data-lang="ru">Получатель</span>
+              </div>
+              <div style="font-weight: 600;">ФОП Каблучко Олександр Володимирович</div>
+            </div>
+            <div style="margin-bottom: 12px;">
+              <div style="color: var(--muted); font-size: 12px; margin-bottom: 2px;">IBAN</div>
+              <div style="font-weight: 600; letter-spacing: 0.02em; word-break: break-all;">UA943220010000026008300058607</div>
+            </div>
+            <div>
+              <div style="color: var(--muted); font-size: 12px; margin-bottom: 2px;">ЄДРПОУ</div>
+              <div style="font-weight: 600;">2685315998</div>
+            </div>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px;">
+              <span data-lang="uk" class="active">У призначенні платежу вкажіть: «Оплата за товар» + ваше ім’я або номер замовлення</span>
+              <span data-lang="ru">В назначении платежа укажите: «Оплата за товар» + ваше имя или номер заказа</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 PowerRouter · 
+        <span data-lang="uk" class="active">Безперебійні комплекти для роутера</span>
+        <span data-lang="ru">Бесперебойные комплекты для роутера</span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const langBtns = document.querySelectorAll('[data-set-lang]');
+    const allLangEls = document.querySelectorAll('[data-lang]');
+
+    function setLang(lang) {
+      allLangEls.forEach(el => {
+        el.classList.toggle('active', el.getAttribute('data-lang') === lang);
+      });
+      langBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-set-lang') === lang);
+      });
+      document.documentElement.lang = lang === 'uk' ? 'uk' : 'ru';
+      localStorage.setItem('lang', lang);
+    }
+
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.getAttribute('data-set-lang')));
+    });
+
+    const saved = localStorage.getItem('lang') || 'uk';
+    setLang(saved);
+  </script>
+</body>
+</html>
