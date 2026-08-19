@@ -1024,7 +1024,7 @@
 
     // ===== Nova Poshta через Cloudflare Worker (ключ тільки на сервері) =====
     // Після деплою воркера встав сюди його URL:
-    const NP_PROXY_URL = 'https://np-proxy.YOUR_SUBDOMAIN.workers.dev';
+    const NP_PROXY_URL = 'https://winter-sun-55c2.crewdocssolution.workers.dev';
 
     async function npRequest(modelName, calledMethod, methodProperties) {
       const res = await fetch(NP_PROXY_URL, {
