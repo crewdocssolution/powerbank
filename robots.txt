@@ -2,6 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://ваш-домен.com.ua/sitemap.xml
-
-# Блокуємо службові файли
-Disallow: /images/
