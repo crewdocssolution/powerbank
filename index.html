@@ -66,22 +66,30 @@
     .lang-btn.active { background: var(--accent); color: #111215; }
 
     /* Hero */
-    .hero { padding: 140px 0 80px; text-align: center; }
+    .hero {
+      padding: 120px 0 60px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(197, 168, 128, 0.12); color: var(--accent);
       font-size: 13px; font-weight: 600; padding: 6px 14px;
-      border-radius: 100px; margin-bottom: 24px;
+      border-radius: 100px; margin-bottom: 20px;
       border: 1px solid rgba(197, 168, 128, 0.25);
     }
     .hero h1 {
-      font-size: clamp(32px, 5vw, 48px); font-weight: 700;
-      letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px;
-      max-width: 720px; margin-left: auto; margin-right: auto;
+      font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+      letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px;
+      text-align: left;
     }
     .hero p {
-      font-size: 18px; color: var(--muted); max-width: 540px;
-      margin: 0 auto 36px;
+      font-size: 17px; color: var(--muted); margin-bottom: 28px;
+      text-align: left; max-width: 460px;
     }
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -95,9 +103,37 @@
       background: transparent; color: var(--text); border: 1px solid var(--border);
     }
     .btn-secondary:hover { border-color: var(--muted); background: rgba(255,255,255,0.03); }
-    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .hero-image { margin-top: 60px; max-width: 420px; margin-left: auto; margin-right: auto; }
-    .hero-image img { width: 100%; height: auto; border-radius: 16px; }
+    .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-image {
+      max-width: 100%;
+    }
+    .hero-image img {
+      width: 100%; height: auto; border-radius: 20px;
+      background: #0D0D0F;
+    }
+    .product-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    .product-badge.assembled {
+      background: rgba(197, 168, 128, 0.15);
+      color: var(--accent);
+    }
+    .product-badge.factory {
+      background: rgba(134, 134, 139, 0.2);
+      color: var(--muted);
+    }
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+      .hero h1, .hero p { text-align: center; margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+      .hero { padding: 100px 0 50px; }
+    }
 
     /* Sections */
     section { padding: 80px 0; }
@@ -255,7 +291,6 @@
 
     @media (max-width: 768px) {
       nav { display: none; }
-      .hero { padding: 110px 0 60px; }
       section { padding: 60px 0; }
     }
   </style>
@@ -288,7 +323,7 @@
         "item": {
           "@type": "Product",
           "name": "Комплект 20 000 mAh — PowerBank + DC-блок для роутера",
-          "image": "https://ваш-домен.com.ua/powerbank-20k.jpg",
+          "image": "https://ваш-домен.com.ua/kit-20k.jpg",
           "description": "Збірний комплект: PowerBank 20 000 mAh з наскрізною зарядкою + DC-блок 5/9/12V + 2 кабелі. Безперебійне живлення роутера та GPON під час відключень світла.",
           "sku": "KIT-20K",
           "brand": { "@type": "Brand", "name": "PowerRouter" },
@@ -412,31 +447,35 @@
     <!-- Hero -->
     <section class="hero">
       <div class="container">
-        <div class="hero-badge">
-          <span>⚡</span>
-          <span data-lang="uk" class="active">Інтернет навіть без світла</span>
-          <span data-lang="ru">Интернет даже без света</span>
-        </div>
-        <h1>
-          <span data-lang="uk" class="active">Безперебійні комплекти<br>для роутера та GPON</span>
-          <span data-lang="ru">Бесперебойные комплекты<br>для роутера и GPON</span>
-        </h1>
-        <p>
-          <span data-lang="uk" class="active">PowerBank з наскрізною зарядкою + DC-блок. Підключив один раз — інтернет працює 10–30+ годин під час відключень.</span>
-          <span data-lang="ru">PowerBank с сквозной зарядкой + DC-блок. Подключил один раз — интернет работает 10–30+ часов во время отключений.</span>
-        </p>
-        <div class="hero-buttons">
-          <a href="#order" class="btn btn-primary">
-            <span data-lang="uk" class="active">Замовити комплект</span>
-            <span data-lang="ru">Заказать комплект</span>
-          </a>
-          <a href="#products" class="btn btn-secondary">
-            <span data-lang="uk" class="active">Дивитися ціни</span>
-            <span data-lang="ru">Смотреть цены</span>
-          </a>
-        </div>
-        <div class="hero-image">
-          <img src="hoco-j86.jpg" alt="Hoco PowerBank для роутера" loading="eager">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span>⚡</span>
+              <span data-lang="uk" class="active">Інтернет навіть без світла</span>
+              <span data-lang="ru">Интернет даже без света</span>
+            </div>
+            <h1>
+              <span data-lang="uk" class="active">Безперебійні комплекти<br>для роутера та GPON</span>
+              <span data-lang="ru">Бесперебойные комплекты<br>для роутера и GPON</span>
+            </h1>
+            <p>
+              <span data-lang="uk" class="active">PowerBank з наскрізною зарядкою + DC-блок. Підключив один раз — інтернет працює 10–30+ годин під час відключень.</span>
+              <span data-lang="ru">PowerBank с сквозной зарядкой + DC-блок. Подключил один раз — интернет работает 10–30+ часов во время отключений.</span>
+            </p>
+            <div class="hero-buttons">
+              <a href="#order" class="btn btn-primary">
+                <span data-lang="uk" class="active">Замовити комплект</span>
+                <span data-lang="ru">Заказать комплект</span>
+              </a>
+              <a href="#products" class="btn btn-secondary">
+                <span data-lang="uk" class="active">Дивитися ціни</span>
+                <span data-lang="ru">Смотреть цены</span>
+              </a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="hoco-j86.jpg" alt="Hoco PowerBank для роутера" loading="eager">
+          </div>
         </div>
       </div>
     </section>
@@ -517,24 +556,27 @@
           <!-- Комплект 20k -->
           <div class="product-card">
             <div class="product-img">
-              <img src="powerbank-20k.jpg" alt="Комплект 20 000 mAh" loading="lazy">
+              <img src="kit-20k.jpg" alt="Комплект 20 000 mAh" loading="lazy">
             </div>
             <div class="product-body">
+              <div class="product-badge assembled">
+                <span data-lang="uk" class="active">Збірний</span>
+                <span data-lang="ru">Сборный</span>
+              </div>
               <h3>
                 <span data-lang="uk" class="active">Комплект 20 000 mAh</span>
                 <span data-lang="ru">Комплект 20 000 mAh</span>
               </h3>
               <div class="product-price">1 690 ₴</div>
               <p>
-                <span data-lang="uk" class="active">Збірний комплект: PowerBank 20 000 mAh + DC-блок + 2 кабелі. Оптимальний варіант для більшості роутерів.</span>
-                <span data-lang="ru">Сборный комплект: PowerBank 20 000 mAh + DC-блок + 2 кабеля. Оптимальный вариант для большинства роутеров.</span>
+                <span data-lang="uk" class="active">PowerBank 20 000 mAh + DC-блок + 2 кабелі. Оптимальний варіант для більшості роутерів.</span>
+                <span data-lang="ru">PowerBank 20 000 mAh + DC-блок + 2 кабеля. Оптимальный вариант для большинства роутеров.</span>
               </p>
               <div class="product-tags">
                 <span class="tag">20 000 mAh</span>
                 <span class="tag">Наскрізна зарядка</span>
-                <span class="tag muted">Збірний</span>
               </div>
-              <a href="#order" class="btn btn-primary" style="width:100%">
+              <a href="#order" class="btn btn-primary" style="width:100%" onclick="selectProduct('kit20')">
                 <span data-lang="uk" class="active">Замовити</span>
                 <span data-lang="ru">Заказать</span>
               </a>
@@ -547,21 +589,24 @@
               <img src="scheme.jpg" alt="Комплект 10 000 mAh" loading="lazy" style="max-height:220px">
             </div>
             <div class="product-body">
+              <div class="product-badge factory">
+                <span data-lang="uk" class="active">Заводський</span>
+                <span data-lang="ru">Заводской</span>
+              </div>
               <h3>
                 <span data-lang="uk" class="active">Комплект 10 000 mAh</span>
                 <span data-lang="ru">Комплект 10 000 mAh</span>
               </h3>
               <div class="product-price">1 690 ₴</div>
               <p>
-                <span data-lang="uk" class="active">Заводський набір: PowerBank 10 000 mAh + DC-блок + кабелі. Компактний і надійний варіант.</span>
-                <span data-lang="ru">Заводской набор: PowerBank 10 000 mAh + DC-блок + кабели. Компактный и надёжный вариант.</span>
+                <span data-lang="uk" class="active">PowerBank 10 000 mAh + DC-блок + кабелі. Компактний і надійний варіант.</span>
+                <span data-lang="ru">PowerBank 10 000 mAh + DC-блок + кабели. Компактный и надёжный вариант.</span>
               </p>
               <div class="product-tags">
                 <span class="tag">10 000 mAh</span>
                 <span class="tag">Наскрізна зарядка</span>
-                <span class="tag muted">Заводський</span>
               </div>
-              <a href="#order" class="btn btn-primary" style="width:100%">
+              <a href="#order" class="btn btn-primary" style="width:100%" onclick="selectProduct('kit10')">
                 <span data-lang="uk" class="active">Замовити</span>
                 <span data-lang="ru">Заказать</span>
               </a>
@@ -585,7 +630,7 @@
                 <span class="tag">22.5W</span>
                 <span class="tag">PD / QC</span>
               </div>
-              <a href="#order" class="btn btn-primary" style="width:100%">
+              <a href="#order" class="btn btn-primary" style="width:100%" onclick="selectProduct('j86')">
                 <span data-lang="uk" class="active">Замовити</span>
                 <span data-lang="ru">Заказать</span>
               </a>
@@ -609,7 +654,7 @@
                 <span class="tag">22.5W</span>
                 <span class="tag">PD / QC</span>
               </div>
-              <a href="#order" class="btn btn-primary" style="width:100%">
+              <a href="#order" class="btn btn-primary" style="width:100%" onclick="selectProduct('j86a')">
                 <span data-lang="uk" class="active">Замовити</span>
                 <span data-lang="ru">Заказать</span>
               </a>
@@ -633,7 +678,7 @@
                 <span class="tag">222 Wh</span>
                 <span class="tag">PD 20W</span>
               </div>
-              <a href="#order" class="btn btn-primary" style="width:100%">
+              <a href="#order" class="btn btn-primary" style="width:100%" onclick="selectProduct('j86b')">
                 <span data-lang="uk" class="active">Замовити</span>
                 <span data-lang="ru">Заказать</span>
               </a>
@@ -712,11 +757,11 @@
             </label>
             <select id="orderProduct" name="product" required>
               <option value="" disabled selected>— оберіть —</option>
-              <option value="Комплект 20 000 mAh — 1690 грн">Комплект 20 000 mAh — 1 690 ₴</option>
-              <option value="Комплект 10 000 mAh — 1690 грн">Комплект 10 000 mAh — 1 690 ₴</option>
-              <option value="Hoco J86 40 000 mAh — 1990 грн">Hoco J86 40 000 mAh — 1 990 ₴</option>
-              <option value="Hoco J86A 50 000 mAh — 2150 грн">Hoco J86A 50 000 mAh — 2 150 ₴</option>
-              <option value="Hoco J86B 60 000 mAh — 2490 грн">Hoco J86B 60 000 mAh — 2 490 ₴</option>
+              <option value="Комплект 20 000 mAh — 1690 грн" data-id="kit20">Комплект 20 000 mAh — 1 690 ₴</option>
+              <option value="Комплект 10 000 mAh — 1690 грн" data-id="kit10">Комплект 10 000 mAh — 1 690 ₴</option>
+              <option value="Hoco J86 40 000 mAh — 1990 грн" data-id="j86">Hoco J86 40 000 mAh — 1 990 ₴</option>
+              <option value="Hoco J86A 50 000 mAh — 2150 грн" data-id="j86a">Hoco J86A 50 000 mAh — 2 150 ₴</option>
+              <option value="Hoco J86B 60 000 mAh — 2490 грн" data-id="j86b">Hoco J86B 60 000 mAh — 2 490 ₴</option>
             </select>
           </div>
           <div class="form-group">
@@ -823,6 +868,18 @@
 
     const saved = localStorage.getItem('lang') || 'uk';
     setLang(saved);
+
+    // Pre-select product in form when clicking "Замовити"
+    function selectProduct(id) {
+      const select = document.getElementById('orderProduct');
+      if (!select) return;
+      for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].getAttribute('data-id') === id) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+    }
 
     // Order form → Telegram
     function sendOrder(e) {
