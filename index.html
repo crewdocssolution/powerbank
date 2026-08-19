@@ -238,8 +238,11 @@
     .ac-item:hover { background: rgba(197,168,128,0.12); color: var(--accent); }
 
     .contacts-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px; max-width: 500px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; max-width: 780px; margin: 0 auto;
+    }
+    @media (max-width: 700px) {
+      .contacts-grid { grid-template-columns: 1fr; }
     }
     .contact-card {
       background: var(--card); border: 1px solid var(--border);
@@ -306,8 +309,12 @@
     "url": "https://ваш-домен.com.ua",
     "address": {
       "@type": "PostalAddress",
-      "name": "Торговий комплекс Нове Місто",
-      "addressCountry": "UA"
+      "streetAddress": "вул. Базова, 17/30",
+      "addressLocality": "смт Авангард",
+      "addressRegion": "Одеська область",
+      "postalCode": "67805",
+      "addressCountry": "UA",
+      "name": "Торговий комплекс Нове Місто"
     },
     "contactPoint": {
       "@type": "ContactPoint",
@@ -813,7 +820,7 @@
           <a href="https://maps.google.com/maps?ftid=0x40c632874e842373:0xf962cde12142e9c4" class="contact-card" target="_blank" rel="noopener">
             <div class="icon">📍</div>
             <div class="label"><span data-lang="uk" class="active">Адреса</span><span data-lang="ru">Адрес</span></div>
-            <div class="value">ТК «Нове Місто»</div>
+            <div class="value" style="font-size:13px;line-height:1.4">ТК «Нове Місто»<br>вул. Базова, 17/30<br>смт Авангард, Одеська обл., 67805</div>
           </a>
         </div>
         <div style="margin-top:48px;max-width:560px;margin-left:auto;margin-right:auto">
