@@ -112,21 +112,25 @@
       background: #0D0D0F;
     }
     .product-badge {
-      display: inline-block;
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
       font-size: 11px;
       font-weight: 600;
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 6px;
-      margin-bottom: 8px;
       letter-spacing: 0.02em;
+      backdrop-filter: blur(6px);
     }
     .product-badge.assembled {
-      background: rgba(197, 168, 128, 0.15);
-      color: var(--accent);
+      background: rgba(197, 168, 128, 0.9);
+      color: #111215;
     }
     .product-badge.factory {
-      background: rgba(134, 134, 139, 0.2);
-      color: var(--muted);
+      background: rgba(40, 40, 45, 0.85);
+      color: #F5F5F7;
+      border: 1px solid rgba(255,255,255,0.15);
     }
     @media (max-width: 768px) {
       .hero-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
@@ -177,8 +181,10 @@
       transform: translateY(-4px); border-color: rgba(197, 168, 128, 0.4);
     }
     .product-img {
+      position: relative;
       aspect-ratio: 1; background: #0D0D0F;
       display: flex; align-items: center; justify-content: center; padding: 20px;
+      overflow: hidden;
     }
     .product-img img {
       max-width: 100%; max-height: 260px; object-fit: contain;
@@ -557,12 +563,12 @@
           <div class="product-card">
             <div class="product-img">
               <img src="kit-20k.jpg" alt="Комплект 20 000 mAh" loading="lazy">
-            </div>
-            <div class="product-body">
               <div class="product-badge assembled">
                 <span data-lang="uk" class="active">Збірний</span>
                 <span data-lang="ru">Сборный</span>
               </div>
+            </div>
+            <div class="product-body">
               <h3>
                 <span data-lang="uk" class="active">Комплект 20 000 mAh</span>
                 <span data-lang="ru">Комплект 20 000 mAh</span>
@@ -587,12 +593,12 @@
           <div class="product-card">
             <div class="product-img">
               <img src="scheme.jpg" alt="Комплект 10 000 mAh" loading="lazy" style="max-height:220px">
-            </div>
-            <div class="product-body">
               <div class="product-badge factory">
                 <span data-lang="uk" class="active">Заводський</span>
                 <span data-lang="ru">Заводской</span>
               </div>
+            </div>
+            <div class="product-body">
               <h3>
                 <span data-lang="uk" class="active">Комплект 10 000 mAh</span>
                 <span data-lang="ru">Комплект 10 000 mAh</span>
