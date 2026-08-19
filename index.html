@@ -180,6 +180,55 @@
     .cta-section h2 { font-size: clamp(24px, 4vw, 32px); margin-bottom: 12px; }
     .cta-section p { color: var(--muted); margin-bottom: 28px; }
 
+    /* Order form */
+    .order-form {
+      max-width: 480px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 24px;
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text);
+      background: #0D0D0F;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%86868B' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .form-submit {
+      width: 100%;
+      margin-top: 8px;
+    }
+
     /* Contacts */
     .contacts-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -218,7 +267,7 @@
     "@type": "Organization",
     "name": "PowerRouter",
     "url": "https://ваш-домен.com.ua",
-    "logo": "https://ваш-домен.com.ua/images/hoco-j86.jpg",
+    "logo": "https://ваш-домен.com.ua/hoco-j86.jpg",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+380995643468",
@@ -239,7 +288,7 @@
         "item": {
           "@type": "Product",
           "name": "Комплект 20 000 mAh — PowerBank + DC-блок для роутера",
-          "image": "https://ваш-домен.com.ua/images/powerbank-20k.jpg",
+          "image": "https://ваш-домен.com.ua/powerbank-20k.jpg",
           "description": "Збірний комплект: PowerBank 20 000 mAh з наскрізною зарядкою + DC-блок 5/9/12V + 2 кабелі. Безперебійне живлення роутера та GPON під час відключень світла.",
           "sku": "KIT-20K",
           "brand": { "@type": "Brand", "name": "PowerRouter" },
@@ -260,7 +309,7 @@
         "item": {
           "@type": "Product",
           "name": "Комплект 10 000 mAh — PowerBank + DC-блок для роутера",
-          "image": "https://ваш-домен.com.ua/images/scheme.jpg",
+          "image": "https://ваш-домен.com.ua/scheme.jpg",
           "description": "Заводський набір: PowerBank 10 000 mAh з наскрізною зарядкою + DC-блок + кабелі. Компактне безперебійне живлення для роутера.",
           "sku": "KIT-10K",
           "brand": { "@type": "Brand", "name": "PowerRouter" },
@@ -281,7 +330,7 @@
         "item": {
           "@type": "Product",
           "name": "Hoco J86 PowerBank 40000 mAh",
-          "image": "https://ваш-домен.com.ua/images/hoco-j86.jpg",
+          "image": "https://ваш-домен.com.ua/hoco-j86.jpg",
           "description": "Hoco J86 40000 mAh з дисплеєм, 22.5W PD/QC, наскрізна зарядка. Для роутера та телефонів.",
           "sku": "HOCO-J86",
           "brand": { "@type": "Brand", "name": "Hoco" },
@@ -302,7 +351,7 @@
         "item": {
           "@type": "Product",
           "name": "Hoco J86A PowerBank 50000 mAh",
-          "image": "https://ваш-домен.com.ua/images/hoco-j86a.jpg",
+          "image": "https://ваш-домен.com.ua/hoco-j86a.jpg",
           "description": "Hoco J86A 50000 mAh, 22.5W, наскрізна зарядка. Збільшена ємність для довшої автономної роботи роутера.",
           "sku": "HOCO-J86A",
           "brand": { "@type": "Brand", "name": "Hoco" },
@@ -323,7 +372,7 @@
         "item": {
           "@type": "Product",
           "name": "Hoco J86B PowerBank 60000 mAh",
-          "image": "https://ваш-домен.com.ua/images/hoco-j86b.jpg",
+          "image": "https://ваш-домен.com.ua/hoco-j86b.jpg",
           "description": "Hoco J86B 60000 mAh (222 Wh), максимальна ємність для роутера та кількох пристроїв.",
           "sku": "HOCO-J86B",
           "brand": { "@type": "Brand", "name": "Hoco" },
@@ -377,7 +426,7 @@
           <span data-lang="ru">PowerBank с сквозной зарядкой + DC-блок. Подключил один раз — интернет работает 10–30+ часов во время отключений.</span>
         </p>
         <div class="hero-buttons">
-          <a href="#contacts" class="btn btn-primary">
+          <a href="#order" class="btn btn-primary">
             <span data-lang="uk" class="active">Замовити комплект</span>
             <span data-lang="ru">Заказать комплект</span>
           </a>
@@ -387,7 +436,7 @@
           </a>
         </div>
         <div class="hero-image">
-          <img src="images/hoco-j86.jpg" alt="Hoco PowerBank для роутера" loading="eager">
+          <img src="hoco-j86.jpg" alt="Hoco PowerBank для роутера" loading="eager">
         </div>
       </div>
     </section>
@@ -468,7 +517,7 @@
           <!-- Комплект 20k -->
           <div class="product-card">
             <div class="product-img">
-              <img src="images/powerbank-20k.jpg" alt="Комплект 20 000 mAh" loading="lazy">
+              <img src="powerbank-20k.jpg" alt="Комплект 20 000 mAh" loading="lazy">
             </div>
             <div class="product-body">
               <h3>
@@ -485,7 +534,7 @@
                 <span class="tag">Наскрізна зарядка</span>
                 <span class="tag muted">Збірний</span>
               </div>
-              <a href="#contacts" class="btn btn-primary" style="width:100%">
+              <a href="#order" class="btn btn-primary" style="width:100%">
                 <span data-lang="uk" class="active">Замовити</span>
                 <span data-lang="ru">Заказать</span>
               </a>
@@ -495,7 +544,7 @@
           <!-- Комплект 10k -->
           <div class="product-card">
             <div class="product-img">
-              <img src="images/scheme.jpg" alt="Комплект 10 000 mAh" loading="lazy" style="max-height:220px">
+              <img src="scheme.jpg" alt="Комплект 10 000 mAh" loading="lazy" style="max-height:220px">
             </div>
             <div class="product-body">
               <h3>
@@ -512,7 +561,7 @@
                 <span class="tag">Наскрізна зарядка</span>
                 <span class="tag muted">Заводський</span>
               </div>
-              <a href="#contacts" class="btn btn-primary" style="width:100%">
+              <a href="#order" class="btn btn-primary" style="width:100%">
                 <span data-lang="uk" class="active">Замовити</span>
                 <span data-lang="ru">Заказать</span>
               </a>
@@ -522,7 +571,7 @@
           <!-- Hoco J86 -->
           <div class="product-card">
             <div class="product-img">
-              <img src="images/hoco-j86.jpg" alt="Hoco J86 40000 mAh" loading="lazy">
+              <img src="hoco-j86.jpg" alt="Hoco J86 40000 mAh" loading="lazy">
             </div>
             <div class="product-body">
               <h3>Hoco J86 · 40 000 mAh</h3>
@@ -536,7 +585,7 @@
                 <span class="tag">22.5W</span>
                 <span class="tag">PD / QC</span>
               </div>
-              <a href="#contacts" class="btn btn-primary" style="width:100%">
+              <a href="#order" class="btn btn-primary" style="width:100%">
                 <span data-lang="uk" class="active">Замовити</span>
                 <span data-lang="ru">Заказать</span>
               </a>
@@ -546,7 +595,7 @@
           <!-- Hoco J86A -->
           <div class="product-card">
             <div class="product-img">
-              <img src="images/hoco-j86a.jpg" alt="Hoco J86A 50000 mAh" loading="lazy">
+              <img src="hoco-j86a.jpg" alt="Hoco J86A 50000 mAh" loading="lazy">
             </div>
             <div class="product-body">
               <h3>Hoco J86A · 50 000 mAh</h3>
@@ -560,7 +609,7 @@
                 <span class="tag">22.5W</span>
                 <span class="tag">PD / QC</span>
               </div>
-              <a href="#contacts" class="btn btn-primary" style="width:100%">
+              <a href="#order" class="btn btn-primary" style="width:100%">
                 <span data-lang="uk" class="active">Замовити</span>
                 <span data-lang="ru">Заказать</span>
               </a>
@@ -570,7 +619,7 @@
           <!-- Hoco J86B -->
           <div class="product-card">
             <div class="product-img">
-              <img src="images/hoco-j86b.jpg" alt="Hoco J86B 60000 mAh" loading="lazy">
+              <img src="hoco-j86b.jpg" alt="Hoco J86B 60000 mAh" loading="lazy">
             </div>
             <div class="product-body">
               <h3>Hoco J86B · 60 000 mAh</h3>
@@ -584,7 +633,7 @@
                 <span class="tag">222 Wh</span>
                 <span class="tag">PD 20W</span>
               </div>
-              <a href="#contacts" class="btn btn-primary" style="width:100%">
+              <a href="#order" class="btn btn-primary" style="width:100%">
                 <span data-lang="uk" class="active">Замовити</span>
                 <span data-lang="ru">Заказать</span>
               </a>
@@ -607,7 +656,7 @@
           <span data-lang="ru">Одна простая схема — и интернет больше не зависит от света</span>
         </p>
         <div class="scheme-wrap">
-          <img src="images/scheme.jpg" alt="Схема підключення безперебійника до роутера" loading="lazy">
+          <img src="scheme.jpg" alt="Схема підключення безперебійника до роутера" loading="lazy">
         </div>
       </div>
     </section>
@@ -620,13 +669,68 @@
           <span data-lang="ru">Готовы больше не оставаться без интернета?</span>
         </h2>
         <p>
-          <span data-lang="uk" class="active">Напишіть нам — підберемо оптимальний комплект під ваш роутер</span>
-          <span data-lang="ru">Напишите нам — подберём оптимальный комплект под ваш роутер</span>
+          <span data-lang="uk" class="active">Залиште заявку — підберемо оптимальний комплект під ваш роутер</span>
+          <span data-lang="ru">Оставьте заявку — подберём оптимальный комплект под ваш роутер</span>
         </p>
-        <a href="#contacts" class="btn btn-primary">
-          <span data-lang="uk" class="active">Написати зараз</span>
-          <span data-lang="ru">Написать сейчас</span>
+        <a href="#order" class="btn btn-primary">
+          <span data-lang="uk" class="active">Замовити зараз</span>
+          <span data-lang="ru">Заказать сейчас</span>
         </a>
+      </div>
+    </section>
+
+    <!-- Order form -->
+    <section id="order">
+      <div class="container">
+        <h2 class="section-title">
+          <span data-lang="uk" class="active">Оформити замовлення</span>
+          <span data-lang="ru">Оформить заказ</span>
+        </h2>
+        <p class="section-sub">
+          <span data-lang="uk" class="active">Заповніть форму — заявка відкриється в Telegram</span>
+          <span data-lang="ru">Заполните форму — заявка откроется в Telegram</span>
+        </p>
+        <form class="order-form" id="orderForm" onsubmit="return sendOrder(event)">
+          <div class="form-group">
+            <label>
+              <span data-lang="uk" class="active">Ваше ім’я *</span>
+              <span data-lang="ru">Ваше имя *</span>
+            </label>
+            <input type="text" id="orderName" name="name" required placeholder="Іван">
+          </div>
+          <div class="form-group">
+            <label>
+              <span data-lang="uk" class="active">Телефон *</span>
+              <span data-lang="ru">Телефон *</span>
+            </label>
+            <input type="tel" id="orderPhone" name="phone" required placeholder="099 123 45 67">
+          </div>
+          <div class="form-group">
+            <label>
+              <span data-lang="uk" class="active">Товар *</span>
+              <span data-lang="ru">Товар *</span>
+            </label>
+            <select id="orderProduct" name="product" required>
+              <option value="" disabled selected>— оберіть —</option>
+              <option value="Комплект 20 000 mAh — 1690 грн">Комплект 20 000 mAh — 1 690 ₴</option>
+              <option value="Комплект 10 000 mAh — 1690 грн">Комплект 10 000 mAh — 1 690 ₴</option>
+              <option value="Hoco J86 40 000 mAh — 1990 грн">Hoco J86 40 000 mAh — 1 990 ₴</option>
+              <option value="Hoco J86A 50 000 mAh — 2150 грн">Hoco J86A 50 000 mAh — 2 150 ₴</option>
+              <option value="Hoco J86B 60 000 mAh — 2490 грн">Hoco J86B 60 000 mAh — 2 490 ₴</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>
+              <span data-lang="uk" class="active">Коментар</span>
+              <span data-lang="ru">Комментарий</span>
+            </label>
+            <textarea id="orderComment" name="comment" placeholder="Місто, кількість, побажання..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">
+            <span data-lang="uk" class="active">Надіслати в Telegram</span>
+            <span data-lang="ru">Отправить в Telegram</span>
+          </button>
+        </form>
       </div>
     </section>
 
@@ -638,8 +742,8 @@
           <span data-lang="ru">Контакты</span>
         </h2>
         <p class="section-sub">
-          <span data-lang="uk" class="active">Оберіть зручний спосіб зв’язку. Відповідаємо швидко.</span>
-          <span data-lang="ru">Выберите удобный способ связи. Отвечаем быстро.</span>
+          <span data-lang="uk" class="active">Або напишіть / зателефонуйте напряму</span>
+          <span data-lang="ru">Или напишите / позвоните напрямую</span>
         </p>
         <div class="contacts-grid">
           <a href="https://t.me/+380995643468" class="contact-card" target="_blank" rel="noopener">
@@ -719,6 +823,29 @@
 
     const saved = localStorage.getItem('lang') || 'uk';
     setLang(saved);
+
+    // Order form → Telegram
+    function sendOrder(e) {
+      e.preventDefault();
+      const name = document.getElementById('orderName').value.trim();
+      const phone = document.getElementById('orderPhone').value.trim();
+      const product = document.getElementById('orderProduct').value;
+      const comment = document.getElementById('orderComment').value.trim();
+
+      if (!name || !phone || !product) return false;
+
+      let text = '🛒 *Нове замовлення*%0A%0A';
+      text += '👤 Імʼя: ' + encodeURIComponent(name) + '%0A';
+      text += '📞 Телефон: ' + encodeURIComponent(phone) + '%0A';
+      text += '📦 Товар: ' + encodeURIComponent(product) + '%0A';
+      if (comment) {
+        text += '💬 Коментар: ' + encodeURIComponent(comment) + '%0A';
+      }
+
+      const url = 'https://t.me/+380995643468?text=' + text;
+      window.open(url, '_blank');
+      return false;
+    }
   </script>
 </body>
 </html>
