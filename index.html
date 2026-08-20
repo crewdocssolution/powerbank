@@ -149,9 +149,9 @@
       display: flex; align-items: center; justify-content: center;
     }
     .product-badge {
-      position: absolute; top: 18px; right: -42px; z-index: 3;
-      width: 170px; padding: 8px 0; font-size: 9px; font-weight: 700;
-      letter-spacing: 0.04em; text-align: center; text-transform: uppercase;
+      position: absolute; top: 22px; right: -48px; z-index: 3;
+      width: 210px; padding: 9px 0; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.02em; text-align: center; text-transform: uppercase;
       transform: rotate(45deg); box-shadow: 0 2px 8px rgba(0,0,0,0.35);
       pointer-events: none; white-space: nowrap;
       line-height: 1.2;
@@ -332,6 +332,22 @@
     .form-hint {
       font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px;
     }
+
+    .thankyou-modal {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .thankyou-modal.open { display: flex; }
+    .thankyou-box {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 40px 28px; max-width: 400px; width: 100%;
+      text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .thankyou-box .ok-icon { font-size: 52px; margin-bottom: 16px; }
+    .thankyou-box h3 { font-size: 22px; margin-bottom: 10px; }
+    .thankyou-box p { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 24px; }
+
     .form-success {
       text-align: center; padding: 40px 24px;
     }
@@ -545,8 +561,8 @@
           <div class="product-card">
             <div class="product-gallery" data-gallery="kit20" onclick="openLightbox('kit20')">
               <div class="product-badge assembled">
-                <span data-lang="uk" class="active">ТОП · 20 000</span>
-                <span data-lang="ru">ТОП · 20 000</span>
+                <span data-lang="uk" class="active">ТОП автономність</span>
+                <span data-lang="ru">ТОП автономность</span>
               </div>
               <img src="kit20-1.jpg" alt="Комплект 20 000 mAh" class="active" data-i="0">
               <img src="kit20-2.jpg" alt="Порти" data-i="1">
@@ -591,8 +607,8 @@
           <div class="product-card">
             <div class="product-gallery" data-gallery="dc" onclick="openLightbox('dc')">
               <div class="product-badge factory">
-                <span data-lang="uk" class="active">МОНОБЛОК · PoE</span>
-                <span data-lang="ru">МОНОБЛОК · PoE</span>
+                <span data-lang="uk" class="active">Все-в-одному · PoE</span>
+                <span data-lang="ru">Всё-в-одном · PoE</span>
               </div>
               <img src="dc-1.jpg" alt="DC1018P" class="active" data-i="0">
               <img src="dc-2.jpg" alt="DC1018P порти" data-i="1">
@@ -845,21 +861,7 @@
             <span data-lang="ru">Перезвоним или напишем в Telegram для подтверждения деталей</span>
           </p>
         </form>
-        <div class="order-form form-success" id="orderSuccess" style="display:none">
-          <div class="ok-icon">✅</div>
-          <h3>
-            <span data-lang="uk" class="active">Дякуємо! Замовлення прийнято</span>
-            <span data-lang="ru">Спасибо! Заказ принят</span>
-          </h3>
-          <p>
-            <span data-lang="uk" class="active">Заявку надіслано. Ми зв’яжемося з вами найближчим часом у Telegram або за телефоном.</span>
-            <span data-lang="ru">Заявка отправлена. Мы свяжемся с вами в ближайшее время в Telegram или по телефону.</span>
-          </p>
-          <a href="#products" class="btn btn-secondary" style="margin-top:16px" onclick="document.getElementById('orderSuccess').style.display='none';document.getElementById('orderForm').style.display='block';return true;">
-            <span data-lang="uk" class="active">Повернутися до комплектів</span>
-            <span data-lang="ru">Вернуться к комплектам</span>
-          </a>
-        </div>
+
       </div>
     </section>
 
@@ -1089,8 +1091,11 @@
       document.getElementById('lightboxCounter').textContent = (lbIdx + 1) + ' / ' + galleryImgs[lbId].length;
     }
     document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeThankYou();
+        if (document.getElementById('lightbox').classList.contains('open')) closeLightbox();
+      }
       if (!document.getElementById('lightbox').classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') lightboxNav(-1);
       if (e.key === 'ArrowRight') lightboxNav(1);
     });
@@ -1250,6 +1255,23 @@
       updateAddressFields();
     });
 
+    
+    function openThankYou() {
+      const m = document.getElementById('thankyouModal');
+      if (!m) return;
+      const lang = localStorage.getItem('lang') || 'uk';
+      m.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('active', el.getAttribute('data-lang') === lang);
+      });
+      m.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeThankYou() {
+      const m = document.getElementById('thankyouModal');
+      if (m) m.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
     function sendOrder(e) {
       e.preventDefault();
       const name = document.getElementById('orderName').value.trim();
@@ -1281,18 +1303,10 @@
         .then(r => r.json())
         .then(data => {
           if (data && data.success) {
+            openThankYou();
             const form = document.getElementById('orderForm');
-            const success = document.getElementById('orderSuccess');
-            if (form) form.style.display = 'none';
-            if (success) {
-              success.style.display = 'block';
-              // re-apply language visibility
-              const lang = localStorage.getItem('lang') || 'uk';
-              success.querySelectorAll('[data-lang]').forEach(el => {
-                el.classList.toggle('active', el.getAttribute('data-lang') === lang);
-              });
-              success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+            if (form) form.reset();
+            if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
           } else {
             alert((data && data.error) ? data.error : 'Помилка відправки. Спробуйте ще раз або напишіть у Telegram.');
             if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
@@ -1306,5 +1320,25 @@
       return false;
     }
   </script>
+
+  <!-- Thank you modal (для реклами / конверсії) -->
+  <div class="thankyou-modal" id="thankyouModal" onclick="if(event.target===this)closeThankYou()">
+    <div class="thankyou-box">
+      <div class="ok-icon">✅</div>
+      <h3>
+        <span data-lang="uk" class="active">Дякуємо за замовлення!</span>
+        <span data-lang="ru">Спасибо за заказ!</span>
+      </h3>
+      <p>
+        <span data-lang="uk" class="active">Заявку прийнято. Ми зв’яжемося з вами найближчим часом у Telegram або за телефоном.</span>
+        <span data-lang="ru">Заявка принята. Мы свяжемся с вами в ближайшее время в Telegram или по телефону.</span>
+      </p>
+      <button type="button" class="btn btn-primary" style="width:100%" onclick="closeThankYou()">
+        <span data-lang="uk" class="active">Зрозуміло</span>
+        <span data-lang="ru">Понятно</span>
+      </button>
+    </div>
+  </div>
+
 </body>
 </html>
