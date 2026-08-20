@@ -290,6 +290,54 @@
     [data-lang].active { display: block; }
     span[data-lang].active { display: inline; }
 
+
+    .trust-row {
+      display: flex; flex-wrap: wrap; gap: 12px 20px; margin-bottom: 24px;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--muted);
+    }
+    .trust-item span:first-child { font-size: 16px; }
+    .compare-box {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 20px 24px; margin-top: 28px;
+      font-size: 14px; color: var(--muted); line-height: 1.7;
+    }
+    .compare-box strong { color: var(--text); }
+    .compare-box .pick { color: var(--accent); font-weight: 600; }
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; margin-bottom: 10px; overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 16px 20px; cursor: pointer; font-weight: 600; font-size: 15px;
+      list-style: none; display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: var(--accent); font-size: 18px; }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item .faq-a {
+      padding: 0 20px 16px; font-size: 14px; color: var(--muted); line-height: 1.6;
+    }
+    .compat-banner {
+      max-width: 720px; margin: 0 auto 32px;
+      background: rgba(197,168,128,0.1); border: 1px solid rgba(197,168,128,0.3);
+      border-radius: 14px; padding: 18px 22px; font-size: 14px; line-height: 1.6;
+    }
+    .compat-banner strong { color: var(--accent); }
+    .form-hint {
+      font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px;
+    }
+    .form-success {
+      display: none; text-align: center; padding: 28px 16px;
+    }
+    .form-success.show { display: block; }
+    .form-success .ok-icon { font-size: 40px; margin-bottom: 12px; }
+    .form-success h3 { font-size: 18px; margin-bottom: 8px; }
+    .form-success p { color: var(--muted); font-size: 14px; }
+
     @media (max-width: 768px) {
       nav { display: none; }
       .hero-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -409,6 +457,11 @@
               <span data-lang="uk" class="active">Заводський DC1018P або збірний комплект 20 000 mAh. Підключив один раз — інтернет працює під час відключень.</span>
               <span data-lang="ru">Заводской DC1018P или сборный комплект 20 000 mAh. Подключил один раз — интернет работает во время отключений.</span>
             </p>
+            <div class="trust-row">
+              <div class="trust-item"><span>⚡</span><span data-lang="uk" class="active">Без перезавантаження</span><span data-lang="ru">Без перезагрузки</span></div>
+              <div class="trust-item"><span>📦</span><span data-lang="uk" class="active">Відправка 1–2 дні</span><span data-lang="ru">Отправка 1–2 дня</span></div>
+              <div class="trust-item"><span>🔄</span><span data-lang="uk" class="active">14 днів на повернення</span><span data-lang="ru">14 дней на возврат</span></div>
+            </div>
             <div class="hero-buttons">
               <a href="#order" class="btn btn-primary">
                 <span data-lang="uk" class="active">Замовити</span>
@@ -491,8 +544,8 @@
           <div class="product-card">
             <div class="product-gallery" data-gallery="kit20" onclick="openLightbox('kit20')">
               <div class="product-badge assembled">
-                <span data-lang="uk" class="active">Збірний</span>
-                <span data-lang="ru">Сборный</span>
+                <span data-lang="uk" class="active">ТОП автономність</span>
+                <span data-lang="ru">ТОП автономность</span>
               </div>
               <img src="kit20-1.jpg" alt="Комплект 20 000 mAh" class="active" data-i="0">
               <img src="kit20-2.jpg" alt="Порти" data-i="1">
@@ -518,8 +571,8 @@
               </h3>
               <div class="product-price">1 690 ₴</div>
               <p>
-                <span data-lang="uk" class="active">PowerBank 20 000 mAh з наскрізною зарядкою + DC-блок + кабелі. Оптимальний варіант для більшості роутерів.</span>
-                <span data-lang="ru">PowerBank 20 000 mAh со сквозной зарядкой + DC-блок + кабели. Оптимальный вариант для большинства роутеров.</span>
+                <span data-lang="uk" class="active">Максимум часу роботи (до 8–12 год). PowerBank 20 000 mAh з наскрізною зарядкою + DC-блок + кабелі. Гнучке підключення під більшість роутерів.</span>
+                <span data-lang="ru">Максимум времени работы (до 8–12 ч). PowerBank 20 000 mAh со сквозной зарядкой + DC-блок + кабели. Гибкое подключение под большинство роутеров.</span>
               </p>
               <div class="product-tags">
                 <span class="tag">20 000 mAh</span>
@@ -537,8 +590,8 @@
           <div class="product-card">
             <div class="product-gallery" data-gallery="dc" onclick="openLightbox('dc')">
               <div class="product-badge factory">
-                <span data-lang="uk" class="active">Заводський</span>
-                <span data-lang="ru">Заводской</span>
+                <span data-lang="uk" class="active">Все-в-одному · PoE</span>
+                <span data-lang="ru">Всё-в-одном · PoE</span>
               </div>
               <img src="dc-1.jpg" alt="DC1018P" class="active" data-i="0">
               <img src="dc-2.jpg" alt="DC1018P порти" data-i="1">
@@ -561,13 +614,13 @@
               <h3>DC1018P · 10 400 mAh</h3>
               <div class="product-price">1 690 ₴</div>
               <p>
-                <span data-lang="uk" class="active">Заводський DC UPS у зборі. Батарея 10 400 mAh, виходи 5/9/12V, USB, PoE. Готовий до підключення з коробки.</span>
-                <span data-lang="ru">Заводской DC UPS в сборе. Батарея 10 400 mAh, выходы 5/9/12V, USB, PoE. Готов к подключению из коробки.</span>
+                <span data-lang="uk" class="active">Заводський моноблок без зайвих кабелів. Компактний, виходи 5/9/12V, USB і порт <strong style="color:var(--accent)">PoE</strong> для специфічних роутерів. Готовий з коробки.</span>
+                <span data-lang="ru">Заводской моноблок без лишних кабелей. Компактный, выходы 5/9/12V, USB и порт <strong style="color:var(--accent)">PoE</strong> для специфических роутеров. Готов из коробки.</span>
               </p>
               <div class="product-tags">
                 <span class="tag">10 400 mAh</span>
                 <span class="tag">PoE</span>
-                <span class="tag">5/9/12V</span>
+                <span class="tag">Моноблок</span>
               </div>
               <a href="#order" class="btn btn-primary" style="width:100%" onclick="selectProduct('dc')">
                 <span data-lang="uk" class="active">Замовити</span>
@@ -576,6 +629,19 @@
             </div>
           </div>
 
+        </div>
+
+        <div class="compare-box">
+          <span data-lang="uk" class="active">
+            <strong>Швидкий вибір:</strong><br>
+            Потрібно, щоб тримало якнайдовше? <span class="pick">👉 Обирайте 20 000 mAh</span><br>
+            Мінімум дротів на столі або є живлення через PoE? <span class="pick">👉 Обирайте DC1018P</span>
+          </span>
+          <span data-lang="ru">
+            <strong>Быстрый выбор:</strong><br>
+            Нужно, чтобы держало как можно дольше? <span class="pick">👉 Выбирайте 20 000 mAh</span><br>
+            Минимум проводов или нужно PoE? <span class="pick">👉 Выбирайте DC1018P</span>
+          </span>
         </div>
       </div>
     </section>
@@ -592,6 +658,67 @@
         </p>
         <div class="scheme-wrap">
           <img src="scheme-20k.jpg" alt="Схема підключення комплекту 20 000 mAh" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <h2 class="section-title">
+          <span data-lang="uk" class="active">Питання та відповіді</span>
+          <span data-lang="ru">Вопросы и ответы</span>
+        </h2>
+        <div class="compat-banner">
+          <span data-lang="uk" class="active">
+            <strong>Сумісність ~99%.</strong> У комплекті стандартні кабелі/перехідники під DC 5.5×2.1 мм.
+            Сумніваєтесь? Вкажіть модель роутера в коментарі до замовлення — перевіримо перед відправкою.
+          </span>
+          <span data-lang="ru">
+            <strong>Совместимость ~99%.</strong> В комплекте стандартные кабели/переходники под DC 5.5×2.1 мм.
+            Сомневаетесь? Укажите модель роутера в комментарии — проверим перед отправкой.
+          </span>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>
+              <span data-lang="uk" class="active">Чи потягне роутер і GPON/ONU одночасно?</span>
+              <span data-lang="ru">Потянет роутер и GPON/ONU одновременно?</span>
+            </summary>
+            <div class="faq-a">
+              <span data-lang="uk" class="active">Так. Обидва комплекти розраховані на одночасну роботу роутера та оптичного терміналу.</span>
+              <span data-lang="ru">Да. Оба комплекта рассчитаны на одновременную работу роутера и оптического терминала.</span>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span data-lang="uk" class="active">Як перемикається, коли гасне світло?</span>
+              <span data-lang="ru">Как переключается, когда гаснет свет?</span>
+            </summary>
+            <div class="faq-a">
+              <span data-lang="uk" class="active">Миттєво, без перезавантаження роутера — зв’язок не переривається.</span>
+              <span data-lang="ru">Мгновенно, без перезагрузки роутера — связь не прерывается.</span>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span data-lang="uk" class="active">Що, якщо роз’єм не підійде?</span>
+              <span data-lang="ru">Что, если разъём не подойдёт?</span>
+            </summary>
+            <div class="faq-a">
+              <span data-lang="uk" class="active">Обмін або 100% повернення коштів протягом 14 днів з моменту отримання.</span>
+              <span data-lang="ru">Обмен или 100% возврат средств в течение 14 дней с момента получения.</span>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span data-lang="uk" class="active">Чому ціна однакова, а ємність різна?</span>
+              <span data-lang="ru">Почему цена одинаковая, а ёмкость разная?</span>
+            </summary>
+            <div class="faq-a">
+              <span data-lang="uk" class="active">20 000 mAh — більше автономності (збірний). DC1018P — заводський моноблок з PoE, менше дротів. Обирайте під задачу, не лише за mAh.</span>
+              <span data-lang="ru">20 000 mAh — больше автономности (сборный). DC1018P — заводской моноблок с PoE, меньше проводов. Выбирайте под задачу, не только по mAh.</span>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -630,7 +757,7 @@
           </div>
           <div class="form-group">
             <label><span data-lang="uk" class="active">Телефон *</span><span data-lang="ru">Телефон *</span></label>
-            <input type="tel" id="orderPhone" required placeholder="099 123 45 67">
+            <input type="tel" id="orderPhone" required placeholder="+380 99 123 45 67">
           </div>
           <div class="form-group">
             <label><span data-lang="uk" class="active">Товар *</span><span data-lang="ru">Товар *</span></label>
@@ -638,6 +765,7 @@
               <option value="" disabled selected>— оберіть —</option>
               <option value="Комплект 20 000 mAh — 1690 грн" data-id="kit20">Комплект 20 000 mAh — 1 690 ₴</option>
               <option value="DC1018P 10400 mAh — 1690 грн" data-id="dc">DC1018P 10 400 mAh — 1 690 ₴</option>
+              <option value="Потрібна консультація" data-id="consult">Потрібна консультація</option>
             </select>
           </div>
           <div class="form-group">
@@ -704,14 +832,29 @@
             <textarea id="orderComment" placeholder="Побажання..."></textarea>
           </div>
           <div class="form-terms" id="formTerms">
-            <span data-lang="uk" class="active"><strong>Умови:</strong> накладений платіж — лише Нова Пошта і лише після мінімальної передоплати. <strong>Укрпошта — тільки після повної передоплати</strong> на рахунок.</span>
-            <span data-lang="ru"><strong>Условия:</strong> наложенный платёж — только Новая Почта и только после минимальной предоплаты. <strong>Укрпочта — только после полной предоплаты</strong> на счёт.</span>
+            <span data-lang="uk" class="active"><strong>Умови:</strong> накладений платіж (НП) — передоплата <strong>100 ₴</strong>, решта при отриманні. <strong>Укрпошта — тільки після повної передоплати</strong>.</span>
+            <span data-lang="ru"><strong>Условия:</strong> наложенный платёж (НП) — предоплата <strong>100 ₴</strong>, остальное при получении. <strong>Укрпочта — только после полной предоплаты</strong>.</span>
           </div>
-          <button type="submit" class="btn btn-primary form-submit">
-            <span data-lang="uk" class="active">Надіслати в Telegram</span>
-            <span data-lang="ru">Отправить в Telegram</span>
+          <button type="submit" class="btn btn-primary form-submit" id="orderSubmitBtn">
+            <span data-lang="uk" class="active">Оформити замовлення</span>
+            <span data-lang="ru">Оформить заказ</span>
           </button>
+          <p class="form-hint">
+            <span data-lang="uk" class="active">Передзвонимо або напишемо в Telegram для підтвердження деталей</span>
+            <span data-lang="ru">Перезвоним или напишем в Telegram для подтверждения деталей</span>
+          </p>
         </form>
+        <div class="form-success" id="orderSuccess">
+          <div class="ok-icon">✅</div>
+          <h3>
+            <span data-lang="uk" class="active">Дякуємо! Замовлення прийнято</span>
+            <span data-lang="ru">Спасибо! Заказ принят</span>
+          </h3>
+          <p>
+            <span data-lang="uk" class="active">Ми вже отримали заявку. Відкриється Telegram для підтвердження — надішліть повідомлення, якщо воно не відправилось автоматично.</span>
+            <span data-lang="ru">Мы уже получили заявку. Откроется Telegram для подтверждения — отправьте сообщение, если оно не ушло автоматически.</span>
+          </p>
+        </div>
       </div>
     </section>
 
@@ -736,12 +879,12 @@
             <p>
               <span data-lang="uk" class="active">
                 • Переказ на рахунок ФОП (повна або часткова передоплата)<br>
-                • Накладений платіж — лише Нова Пошта, після мінімальної передоплати (вартість доставки або частина суми)<br>
+                • Накладений платіж (Нова Пошта): передоплата <strong style="color:var(--accent)">100 ₴</strong> (страхування доставки), решта — при отриманні<br>
                 • Укрпошта — <strong style="color:var(--accent)">тільки після повної передоплати</strong>
               </span>
               <span data-lang="ru">
                 • Перевод на счёт ФОП (полная или частичная предоплата)<br>
-                • Наложенный платёж — только Новая Почта, после минимальной предоплаты<br>
+                • Наложенный платёж (Новая Почта): предоплата <strong style="color:var(--accent)">100 ₴</strong>, остальное — при получении<br>
                 • Укрпочта — <strong style="color:var(--accent)">только после полной предоплаты</strong>
               </span>
             </p>
@@ -1129,6 +1272,10 @@
       if (comment) text += '💬 Коментар: ' + encodeURIComponent(comment) + '%0A';
 
       window.open('https://t.me/+380995643468?text=' + text, '_blank');
+      const form = document.getElementById('orderForm');
+      const success = document.getElementById('orderSuccess');
+      if (form) form.style.display = 'none';
+      if (success) success.classList.add('show');
       return false;
     }
   </script>
