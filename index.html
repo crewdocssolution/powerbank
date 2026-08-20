@@ -111,7 +111,7 @@
     }
     .product-card {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; overflow: hidden;
+      border-radius: 20px; overflow: visible;
       display: flex; flex-direction: column;
       transition: transform .2s, border-color .2s;
     }
@@ -120,7 +120,8 @@
     }
     .product-gallery {
       position: relative; background: #0D0D0F; aspect-ratio: 1;
-      cursor: pointer;
+      cursor: pointer; overflow: hidden;
+      border-radius: 20px 20px 0 0;
     }
     .product-gallery img {
       width: 100%; height: 100%; object-fit: contain; padding: 16px;
@@ -148,11 +149,12 @@
       display: flex; align-items: center; justify-content: center;
     }
     .product-badge {
-      position: absolute; top: 14px; right: -38px; z-index: 3;
-      width: 140px; padding: 7px 0; font-size: 10px; font-weight: 700;
-      letter-spacing: 0.03em; text-align: center; text-transform: uppercase;
+      position: absolute; top: 18px; right: -42px; z-index: 3;
+      width: 170px; padding: 8px 0; font-size: 9px; font-weight: 700;
+      letter-spacing: 0.04em; text-align: center; text-transform: uppercase;
       transform: rotate(45deg); box-shadow: 0 2px 8px rgba(0,0,0,0.35);
       pointer-events: none; white-space: nowrap;
+      line-height: 1.2;
     }
     .product-badge.assembled { background: var(--accent); color: #111215; }
     .product-badge.factory { background: #3A3A40; color: #F5F5F7; }
@@ -331,12 +333,11 @@
       font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px;
     }
     .form-success {
-      display: none; text-align: center; padding: 28px 16px;
+      text-align: center; padding: 40px 24px;
     }
-    .form-success.show { display: block; }
-    .form-success .ok-icon { font-size: 40px; margin-bottom: 12px; }
-    .form-success h3 { font-size: 18px; margin-bottom: 8px; }
-    .form-success p { color: var(--muted); font-size: 14px; }
+    .form-success .ok-icon { font-size: 48px; margin-bottom: 16px; }
+    .form-success h3 { font-size: 20px; margin-bottom: 10px; }
+    .form-success p { color: var(--muted); font-size: 15px; line-height: 1.5; }
 
     @media (max-width: 768px) {
       nav { display: none; }
@@ -544,8 +545,8 @@
           <div class="product-card">
             <div class="product-gallery" data-gallery="kit20" onclick="openLightbox('kit20')">
               <div class="product-badge assembled">
-                <span data-lang="uk" class="active">ТОП автономність</span>
-                <span data-lang="ru">ТОП автономность</span>
+                <span data-lang="uk" class="active">ТОП · 20 000</span>
+                <span data-lang="ru">ТОП · 20 000</span>
               </div>
               <img src="kit20-1.jpg" alt="Комплект 20 000 mAh" class="active" data-i="0">
               <img src="kit20-2.jpg" alt="Порти" data-i="1">
@@ -590,8 +591,8 @@
           <div class="product-card">
             <div class="product-gallery" data-gallery="dc" onclick="openLightbox('dc')">
               <div class="product-badge factory">
-                <span data-lang="uk" class="active">Все-в-одному · PoE</span>
-                <span data-lang="ru">Всё-в-одном · PoE</span>
+                <span data-lang="uk" class="active">МОНОБЛОК · PoE</span>
+                <span data-lang="ru">МОНОБЛОК · PoE</span>
               </div>
               <img src="dc-1.jpg" alt="DC1018P" class="active" data-i="0">
               <img src="dc-2.jpg" alt="DC1018P порти" data-i="1">
@@ -747,8 +748,8 @@
           <span data-lang="ru">Оформить заказ</span>
         </h2>
         <p class="section-sub">
-          <span data-lang="uk" class="active">Заповніть форму — заявка відкриється в Telegram</span>
-          <span data-lang="ru">Заполните форму — заявка откроется в Telegram</span>
+          <span data-lang="uk" class="active">Заповніть форму — заявка одразу прийде нам у Telegram</span>
+          <span data-lang="ru">Заполните форму — заявка сразу придёт нам в Telegram</span>
         </p>
         <form class="order-form" id="orderForm" onsubmit="return sendOrder(event)">
           <div class="form-group">
@@ -844,16 +845,20 @@
             <span data-lang="ru">Перезвоним или напишем в Telegram для подтверждения деталей</span>
           </p>
         </form>
-        <div class="form-success" id="orderSuccess">
+        <div class="order-form form-success" id="orderSuccess" style="display:none">
           <div class="ok-icon">✅</div>
           <h3>
             <span data-lang="uk" class="active">Дякуємо! Замовлення прийнято</span>
             <span data-lang="ru">Спасибо! Заказ принят</span>
           </h3>
           <p>
-            <span data-lang="uk" class="active">Заявку надіслано. Ми зв’яжемося з вами в Telegram або за телефоном для підтвердження.</span>
-            <span data-lang="ru">Заявка отправлена. Мы свяжемся с вами в Telegram или по телефону для подтверждения.</span>
+            <span data-lang="uk" class="active">Заявку надіслано. Ми зв’яжемося з вами найближчим часом у Telegram або за телефоном.</span>
+            <span data-lang="ru">Заявка отправлена. Мы свяжемся с вами в ближайшее время в Telegram или по телефону.</span>
           </p>
+          <a href="#products" class="btn btn-secondary" style="margin-top:16px" onclick="document.getElementById('orderSuccess').style.display='none';document.getElementById('orderForm').style.display='block';return true;">
+            <span data-lang="uk" class="active">Повернутися до комплектів</span>
+            <span data-lang="ru">Вернуться к комплектам</span>
+          </a>
         </div>
       </div>
     </section>
@@ -1279,7 +1284,15 @@
             const form = document.getElementById('orderForm');
             const success = document.getElementById('orderSuccess');
             if (form) form.style.display = 'none';
-            if (success) success.classList.add('show');
+            if (success) {
+              success.style.display = 'block';
+              // re-apply language visibility
+              const lang = localStorage.getItem('lang') || 'uk';
+              success.querySelectorAll('[data-lang]').forEach(el => {
+                el.classList.toggle('active', el.getAttribute('data-lang') === lang);
+              });
+              success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
           } else {
             alert((data && data.error) ? data.error : 'Помилка відправки. Спробуйте ще раз або напишіть у Telegram.');
             if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
