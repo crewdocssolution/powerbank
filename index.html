@@ -851,8 +851,8 @@
             <span data-lang="ru">Спасибо! Заказ принят</span>
           </h3>
           <p>
-            <span data-lang="uk" class="active">Ми вже отримали заявку. Відкриється Telegram для підтвердження — надішліть повідомлення, якщо воно не відправилось автоматично.</span>
-            <span data-lang="ru">Мы уже получили заявку. Откроется Telegram для подтверждения — отправьте сообщение, если оно не ушло автоматически.</span>
+            <span data-lang="uk" class="active">Заявку надіслано. Ми зв’яжемося з вами в Telegram або за телефоном для підтвердження.</span>
+            <span data-lang="ru">Заявка отправлена. Мы свяжемся с вами в Telegram или по телефону для подтверждения.</span>
           </p>
         </div>
       </div>
@@ -1257,25 +1257,39 @@
       const branch = document.getElementById('orderBranch').value.trim();
       const address = document.getElementById('orderAddress').value.trim();
       const comment = document.getElementById('orderComment').value.trim();
-      if (!name || !phone || !product || !city) return false;
+      if (!name || !phone || !product) return false;
 
-      let text = '🛒 *Нове замовлення*%0A%0A';
-      text += '👤 Імʼя: ' + encodeURIComponent(name) + '%0A';
-      text += '📞 Телефон: ' + encodeURIComponent(phone) + '%0A';
-      text += '📦 Товар: ' + encodeURIComponent(product) + '%0A';
-      text += '💳 Оплата: ' + encodeURIComponent(payment) + '%0A';
-      text += '🚚 Доставка: ' + encodeURIComponent(delivery) + '%0A';
-      if (delivery === 'Нова Пошта' && npType) text += '📍 Тип НП: ' + encodeURIComponent(npType) + '%0A';
-      text += '🏙 Місто: ' + encodeURIComponent(city) + '%0A';
-      if (npType === 'Адресна доставка' && address) text += '🏠 Адреса: ' + encodeURIComponent(address) + '%0A';
-      else if (branch) text += '🏢 Відділення: ' + encodeURIComponent(branch) + '%0A';
-      if (comment) text += '💬 Коментар: ' + encodeURIComponent(comment) + '%0A';
+      const btn = document.getElementById('orderSubmitBtn');
+      if (btn) { btn.disabled = true; btn.style.opacity = '0.6'; }
 
-      window.open('https://t.me/+380995643468?text=' + text, '_blank');
-      const form = document.getElementById('orderForm');
-      const success = document.getElementById('orderSuccess');
-      if (form) form.style.display = 'none';
-      if (success) success.classList.add('show');
+      const payload = {
+        name, phone, product, payment, delivery,
+        npType: delivery === 'Нова Пошта' ? npType : '',
+        city, branch, address, comment
+      };
+
+      fetch(NP_PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(r => r.json())
+        .then(data => {
+          if (data && data.success) {
+            const form = document.getElementById('orderForm');
+            const success = document.getElementById('orderSuccess');
+            if (form) form.style.display = 'none';
+            if (success) success.classList.add('show');
+          } else {
+            alert((data && data.error) ? data.error : 'Помилка відправки. Спробуйте ще раз або напишіть у Telegram.');
+            if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
+          }
+        })
+        .catch(() => {
+          alert('Помилка мережі. Спробуйте ще раз або напишіть у Telegram: +380995643468');
+          if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
+        });
+
       return false;
     }
   </script>
