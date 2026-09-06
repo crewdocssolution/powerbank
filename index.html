@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PowerRouter — Безперебійні комплекти для роутера</title>
   <meta name="description" content="Заводський DC1018P 10400 mAh та збірний комплект 20000 mAh. Інтернет під час відключень світла.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PowerRouter — Безперебійні комплекти для роутера">
+  <meta property="og:description" content="Заводський DC1018P 10400 mAh та збірний комплект 20000 mAh. Інтернет під час відключень світла.">
+  <meta property="og:image" content="https://ваш-домен.com.ua/dc-1.jpg">
+  <meta property="og:locale" content="uk_UA">
+  <meta property="og:locale:alternate" content="ru_UA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PowerRouter — Безперебійні комплекти для роутера">
+  <meta name="twitter:description" content="Заводський DC1018P 10400 mAh та збірний комплект 20000 mAh. Інтернет під час відключень світла.">
+  <meta name="twitter:image" content="https://ваш-домен.com.ua/dc-1.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111215'/%3E%3Cpath d='M18 34h10l-4 16 22-22H36l4-16z' fill='%23C5A880'/%3E%3C/svg%3E" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -364,6 +375,48 @@
       section { padding: 60px 0; }
       .form-row { grid-template-columns: 1fr; }
     }
+  
+    /* Compare table */
+    .compare-wrap { overflow-x: auto; margin-top: 8px; }
+    .compare-table {
+      width: 100%; border-collapse: collapse; min-width: 560px;
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+    }
+    .compare-table th, .compare-table td {
+      padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--border);
+      font-size: 14px; vertical-align: top;
+    }
+    .compare-table th {
+      background: #0D0D0F; font-weight: 600; color: var(--text);
+    }
+    .compare-table th.accent { color: var(--accent); }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td.label { color: var(--muted); width: 28%; font-weight: 500; }
+    .compare-table .yes { color: var(--accent); font-weight: 600; }
+    .compare-hint {
+      text-align: center; color: var(--muted); font-size: 14px; margin-top: 16px;
+    }
+
+    /* Sticky mobile CTA */
+    .sticky-cta {
+      display: none;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+      background: rgba(17,18,21,0.94); backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    }
+    .sticky-cta-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .sticky-cta-price { font-weight: 700; font-size: 18px; color: var(--accent); }
+    .sticky-cta-sub { font-size: 12px; color: var(--muted); }
+    .sticky-cta .btn { padding: 12px 20px; white-space: nowrap; }
+    @media (max-width: 768px) {
+      .sticky-cta { display: block; }
+      body { padding-bottom: 88px; }
+    }
+
   </style>
 
   <script type="application/ld+json">
@@ -447,6 +500,7 @@
         <a href="#products"><span data-lang="uk" class="active">Комплекти</span><span data-lang="ru">Комплекты</span></a>
         <a href="#how"><span data-lang="uk" class="active">Як працює</span><span data-lang="ru">Как работает</span></a>
         <a href="#policies"><span data-lang="uk" class="active">Умови</span><span data-lang="ru">Условия</span></a>
+        <a href="#faq"><span data-lang="uk" class="active">FAQ</span><span data-lang="ru">FAQ</span></a>
         <a href="#contacts"><span data-lang="uk" class="active">Контакти</span><span data-lang="ru">Контакты</span></a>
       </nav>
       <div class="lang-switch">
@@ -660,6 +714,75 @@
             Минимум проводов или нужно PoE? <span class="pick">👉 Выбирайте DC1018P</span>
           </span>
         </div>
+      </div>
+    </section>
+
+
+    <section id="compare">
+      <div class="container">
+        <h2 class="section-title">
+          <span data-lang="uk" class="active">Який комплект обрати</span>
+          <span data-lang="ru">Какой комплект выбрать</span>
+        </h2>
+        <p class="section-sub">
+          <span data-lang="uk" class="active">Коротка таблиця — щоб не гадати між двома варіантами за однією ціною</span>
+          <span data-lang="ru">Короткая таблица — чтобы не гадать между двумя вариантами по одной цене</span>
+        </p>
+        <div class="compare-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th class="accent">
+                  <span data-lang="uk" class="active">Комплект 20 000 mAh</span>
+                  <span data-lang="ru">Комплект 20 000 mAh</span>
+                </th>
+                <th class="accent">DC1018P · 10 400 mAh</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="label"><span data-lang="uk" class="active">Ємність</span><span data-lang="ru">Ёмкость</span></td>
+                <td><strong>20 000 mAh</strong></td>
+                <td>10 400 mAh</td>
+              </tr>
+              <tr>
+                <td class="label"><span data-lang="uk" class="active">Автономність</span><span data-lang="ru">Автономность</span></td>
+                <td class="yes"><span data-lang="uk" class="active">до 8–12 год</span><span data-lang="ru">до 8–12 ч</span></td>
+                <td><span data-lang="uk" class="active">коротші відключення</span><span data-lang="ru">короткие отключения</span></td>
+              </tr>
+              <tr>
+                <td class="label">PoE</td>
+                <td>—</td>
+                <td class="yes"><span data-lang="uk" class="active">є</span><span data-lang="ru">есть</span></td>
+              </tr>
+              <tr>
+                <td class="label"><span data-lang="uk" class="active">Формат</span><span data-lang="ru">Формат</span></td>
+                <td><span data-lang="uk" class="active">PowerBank + DC-блок + кабелі</span><span data-lang="ru">PowerBank + DC-блок + кабели</span></td>
+                <td><span data-lang="uk" class="active">заводський моноблок</span><span data-lang="ru">заводской моноблок</span></td>
+              </tr>
+              <tr>
+                <td class="label">5V / 9V / 12V</td>
+                <td class="yes">✓</td>
+                <td class="yes">✓</td>
+              </tr>
+              <tr>
+                <td class="label"><span data-lang="uk" class="active">Кому підходить</span><span data-lang="ru">Кому подходит</span></td>
+                <td><span data-lang="uk" class="active">Довгі відключення, гнучке підключення під більшість роутерів</span><span data-lang="ru">Долгие отключения, гибкое подключение под большинство роутеров</span></td>
+                <td><span data-lang="uk" class="active">Потрібен PoE або «все в одному» без зайвих кабелів</span><span data-lang="ru">Нужен PoE или «всё в одном» без лишних кабелей</span></td>
+              </tr>
+              <tr>
+                <td class="label"><span data-lang="uk" class="active">Ціна</span><span data-lang="ru">Цена</span></td>
+                <td><strong>1 690 ₴</strong></td>
+                <td><strong>1 690 ₴</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="compare-hint">
+          <span data-lang="uk" class="active">Не впевнені? У формі оберіть «Потрібна консультація» — підкажемо під ваш роутер.</span>
+          <span data-lang="ru">Не уверены? В форме выберите «Нужна консультация» — подскажем под ваш роутер.</span>
+        </p>
       </div>
     </section>
 
@@ -1322,6 +1445,23 @@
   </script>
 
   <!-- Thank you modal (для реклами / конверсії) -->
+  
+  <div class="sticky-cta" id="stickyCta" aria-hidden="false">
+    <div class="sticky-cta-inner">
+      <div>
+        <div class="sticky-cta-price">1 690 ₴</div>
+        <div class="sticky-cta-sub">
+          <span data-lang="uk" class="active">Обидва комплекти · відправка 1–2 дні</span>
+          <span data-lang="ru">Оба комплекта · отправка 1–2 дня</span>
+        </div>
+      </div>
+      <a href="#order" class="btn btn-primary">
+        <span data-lang="uk" class="active">Замовити</span>
+        <span data-lang="ru">Заказать</span>
+      </a>
+    </div>
+  </div>
+
   <div class="thankyou-modal" id="thankyouModal" onclick="if(event.target===this)closeThankYou()">
     <div class="thankyou-box">
       <div class="ok-icon">✅</div>
@@ -1340,5 +1480,19 @@
     </div>
   </div>
 
+
+  <script>
+    (function () {
+      var cta = document.getElementById('stickyCta');
+      var order = document.getElementById('order');
+      if (!cta || !order || !('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          cta.style.display = e.isIntersecting ? 'none' : '';
+        });
+      }, { threshold: 0.15 });
+      io.observe(order);
+    })();
+  </script>
 </body>
 </html>
