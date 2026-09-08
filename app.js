@@ -1,14 +1,11 @@
 const PHOTOS = {
-  kit20: ["hoco-j86.jpg","hoco-j86a.jpg","hoco-j86b.jpg","kit20-2.jpg","kit20-4.jpg","kit20-5.jpg"],
+  kit20: ["kit20-ports.jpg","kit20-mah.jpg","kit20-cable.jpg"],
   dc: ["dc-2.jpg","dc-1.jpg","dc-3.jpg","dc-4.jpg","dc-5.jpg"]
 };
 const POS = {
-  "hoco-j86.jpg": "center center",
-  "hoco-j86a.jpg": "center center",
-  "hoco-j86b.jpg": "center center",
-  "kit20-2.jpg": "center 70%",
-  "kit20-4.jpg": "center 60%",
-  "kit20-5.jpg": "center center",
+  "kit20-ports.jpg": "center 60%",
+  "kit20-mah.jpg": "center 70%",
+  "kit20-cable.jpg": "center center",
   "dc-1.jpg": "center 40%",
   "dc-2.jpg": "center 45%",
   "dc-3.jpg": "center center",
