@@ -1,6 +1,6 @@
 const PHOTOS = {
-  kit20: ["kit20-1.jpg","kit20-2.jpg","kit20-3.jpg","kit20-4.jpg","kit20-5.jpg","hoco-j86.jpg","powerbank-20k.jpg","kit-20k.jpg","scheme-20k.jpg"],
-  dc: ["dc-1.jpg","dc-2.jpg","dc-3.jpg","dc-4.jpg","dc-5.jpg"]
+  kit20: ["hoco-j86.jpg","hoco-j86a.jpg","hoco-j86b.jpg","kit20-2.jpg","kit20-4.jpg","kit20-5.jpg","kit-20k.jpg","scheme-20k.jpg"],
+  dc: ["dc-2.jpg","dc-1.jpg","dc-3.jpg","dc-4.jpg","dc-5.jpg"]
 };
 let current = "kit20";
 
