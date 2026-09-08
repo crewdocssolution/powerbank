@@ -61,19 +61,23 @@ header {
 .gallery { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 12px; }
 .main-photo {
   position: relative; border-radius: 14px; overflow: hidden; background: #10080a;
-  display: grid; place-items: center;
+  display: flex; align-items: center; justify-content: center;
 }
 body.kit20 .main-photo { height: 420px; }
 body.dc .main-photo { height: 300px; }
-.main-photo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.main-photo img {
+  max-width: 100%; max-height: 100%; width: auto; height: auto;
+  object-fit: contain; object-position: center center;
+}
 .badges { position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 8px; z-index: 2; }
 .badge { width: fit-content; border-radius: 8px; padding: 5px 10px; font-size: 12px; font-weight: 700; }
 .badge-red { background: var(--wine); color: #fff; }
 .badge-gold { background: #2a1c12; color: var(--gold); border: 1px solid var(--gold); }
 .thumbs { display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .thumbs img {
-  width: 64px; height: 64px; object-fit: cover; border-radius: 10px;
-  border: 2px solid transparent; cursor: pointer; background: #0d0709; flex-shrink: 0;
+  width: 64px; height: 64px; object-fit: contain; object-position: center center;
+  border-radius: 10px; border: 2px solid transparent; cursor: pointer;
+  background: #0d0709; flex-shrink: 0; padding: 3px;
 }
 .thumbs img.on { border-color: var(--gold); }
 .hero-copy h1 { font-size: clamp(26px, 3.6vw, 40px); line-height: 1.12; margin: 8px 0 12px; }
@@ -94,12 +98,12 @@ body.dc .main-photo { height: 300px; }
 .feat { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px; }
 .feat b { display: block; margin: 8px 0 4px; }
 .feat span { color: var(--muted); font-size: 13px; }
-.poe-note {
-  background: var(--card); border: 1px solid var(--gold); border-radius: 16px;
-  padding: 16px 18px; margin: 8px 0 28px;
+.poe-note, .disclaimer {
+  background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 14px 16px; margin: 8px 0 20px; color: var(--muted); font-size: 13px; line-height: 1.5;
 }
-.poe-note b { color: var(--gold); display: block; margin-bottom: 6px; }
-.poe-note p { color: var(--muted); font-size: 14px; }
+.poe-note { border-color: var(--gold); }
+.poe-note b, .disclaimer b { color: var(--gold); display: block; margin-bottom: 4px; font-size: 13px; }
 section { padding: 44px 0; }
 .kicker { color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
 h2 { font-size: clamp(22px, 3vw, 34px); margin: 6px 0 12px; }
@@ -108,13 +112,14 @@ h2 { font-size: clamp(22px, 3vw, 34px); margin: 6px 0 12px; }
   margin: 16px auto 0; background: var(--card); border: 1px solid var(--border);
   border-radius: 18px; padding: 12px; max-width: 640px;
 }
-.scheme-frame img { display: block; width: 100%; max-height: 340px; object-fit: contain; margin: 0 auto; }
+.scheme-frame img { display: block; width: 100%; max-height: 340px; object-fit: contain; object-position: center; margin: 0 auto; }
 .products { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .pcard { background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
-.pcard .pic { height: 220px; background: #10080a; display: grid; place-items: center; padding: 12px; }
-.pcard .pic img { max-width: 100%; max-height: 196px; object-fit: contain; }
+.pcard .pic { height: 220px; background: #10080a; display: flex; align-items: center; justify-content: center; padding: 12px; }
+.pcard .pic img { max-width: 100%; max-height: 196px; object-fit: contain; object-position: center; }
 .pcard .body { padding: 18px; }
 .pcard p { color: var(--muted); font-size: 14px; margin: 6px 0 12px; }
+.note { font-size: 12px; color: #b89a8e; margin-top: 10px; line-height: 1.45; }
 .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
 .specs-grid h3 { font-size: 16px; margin-bottom: 8px; color: var(--gold); }
 table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 16px; overflow: hidden; }
@@ -169,5 +174,4 @@ footer { padding: 28px 0 96px; color: var(--muted); font-size: 14px; border-top:
 @media (max-width: 480px) {
   .wrap { padding: 0 14px; }
   .features { grid-template-columns: 1fr; }
-  .thumbs img { width: 56px; height: 56px; }
 }
