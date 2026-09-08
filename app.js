@@ -1,5 +1,5 @@
 const PHOTOS = {
-  kit20: ["hoco-j86.jpg","hoco-j86a.jpg","hoco-j86b.jpg","kit20-2.jpg","kit20-4.jpg","kit20-5.jpg","kit-20k.jpg","scheme-20k.jpg"],
+  kit20: ["hoco-j86.jpg","hoco-j86a.jpg","hoco-j86b.jpg","kit20-2.jpg","kit20-4.jpg","kit20-5.jpg"],
   dc: ["dc-2.jpg","dc-1.jpg","dc-3.jpg","dc-4.jpg","dc-5.jpg"]
 };
 let current = "kit20";
@@ -19,6 +19,8 @@ function renderThumbs() {
     `<img src="${src}" class="${i===0?"on":""}" onclick="setPhoto('${src}', this)">`
   ).join("");
   document.getElementById("mainImg").src = PHOTOS[current][0];
+  document.body.classList.remove("kit20","dc");
+  document.body.classList.add(current);
 }
 function setPhoto(src, el) {
   document.getElementById("mainImg").src = src;
