@@ -2,6 +2,19 @@ const PHOTOS = {
   kit20: ["hoco-j86.jpg","hoco-j86a.jpg","hoco-j86b.jpg","kit20-2.jpg","kit20-4.jpg","kit20-5.jpg"],
   dc: ["dc-2.jpg","dc-1.jpg","dc-3.jpg","dc-4.jpg","dc-5.jpg"]
 };
+const POS = {
+  "hoco-j86.jpg": "center center",
+  "hoco-j86a.jpg": "center center",
+  "hoco-j86b.jpg": "center center",
+  "kit20-2.jpg": "center 70%",
+  "kit20-4.jpg": "center 60%",
+  "kit20-5.jpg": "center center",
+  "dc-1.jpg": "center 40%",
+  "dc-2.jpg": "center 45%",
+  "dc-3.jpg": "center center",
+  "dc-4.jpg": "center center",
+  "dc-5.jpg": "center 60%"
+};
 let current = "kit20";
 
 function setLang(lang) {
@@ -12,18 +25,25 @@ function setLang(lang) {
   document.getElementById("btnRu").classList.toggle("active", lang === "ru");
   document.documentElement.lang = lang === "ru" ? "ru" : "uk";
 }
-
+function applyPos(img, src) {
+  img.style.objectPosition = POS[src] || "center center";
+}
 function renderThumbs() {
   const box = document.getElementById("thumbs");
   box.innerHTML = PHOTOS[current].map((src, i) =>
     `<img src="${src}" class="${i===0?"on":""}" onclick="setPhoto('${src}', this)">`
   ).join("");
-  document.getElementById("mainImg").src = PHOTOS[current][0];
+  box.querySelectorAll("img").forEach(img => applyPos(img, img.getAttribute("src")));
+  const main = document.getElementById("mainImg");
+  main.src = PHOTOS[current][0];
+  applyPos(main, PHOTOS[current][0]);
   document.body.classList.remove("kit20","dc");
   document.body.classList.add(current);
 }
 function setPhoto(src, el) {
-  document.getElementById("mainImg").src = src;
+  const main = document.getElementById("mainImg");
+  main.src = src;
+  applyPos(main, src);
   document.querySelectorAll("#thumbs img").forEach(i => i.classList.remove("on"));
   el.classList.add("on");
 }
@@ -31,17 +51,14 @@ function selectProduct(id) {
   current = id;
   document.getElementById("sw20").classList.toggle("on", id === "kit20");
   document.getElementById("swDc").classList.toggle("on", id === "dc");
-  const sel = document.getElementById("orderProduct");
-  sel.selectedIndex = id === "dc" ? 1 : 0;
+  document.getElementById("orderProduct").selectedIndex = id === "dc" ? 1 : 0;
   document.getElementById("orderImg").src = PHOTOS[id][0];
   document.getElementById("orderTitle").textContent = id === "dc" ? "DC1018P · 10 400 mAh" : "Комплект 20 000 mAh";
   renderThumbs();
 }
 function syncFromSelect() {
-  const id = document.getElementById("orderProduct").selectedOptions[0].dataset.id;
-  selectProduct(id);
+  selectProduct(document.getElementById("orderProduct").selectedOptions[0].dataset.id);
 }
-
 const NP_PROXY_URL = "https://winter-sun-55c2.crewdocssolution.workers.dev";
 function openThankYou(){ document.getElementById("thankyouModal").classList.add("open"); document.body.style.overflow="hidden"; }
 function closeThankYou(){ document.getElementById("thankyouModal").classList.remove("open"); document.body.style.overflow=""; }
