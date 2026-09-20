@@ -175,3 +175,23 @@ footer { padding: 28px 0 96px; color: var(--muted); font-size: 14px; border-top:
   .wrap { padding: 0 14px; }
   .features { grid-template-columns: 1fr; }
 }
+.story { display: flex; flex-direction: column; gap: 28px; margin-top: 22px; }
+.story-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: center;
+  background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 16px;
+}
+.story-row.rev { direction: rtl; }
+.story-row.rev > * { direction: ltr; }
+.story-copy b { color: var(--gold); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+.story-copy h3 { font-size: clamp(20px, 2.4vw, 28px); margin: 6px 0 10px; }
+.story-copy p { color: var(--muted); font-size: 15px; }
+.story-pic {
+  background: #10080a; border-radius: 14px; min-height: 240px;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.story-pic img { width: 100%; max-height: 360px; object-fit: contain; object-position: center; }
+@media (max-width: 900px) {
+  .story-row, .story-row.rev { grid-template-columns: 1fr; direction: ltr; }
+  .story-pic { min-height: 200px; }
+  .story-pic img { max-height: 240px; }
+}
