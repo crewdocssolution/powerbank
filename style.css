@@ -80,7 +80,8 @@ body.dc .main-photo { height: 320px; }
 .lead { color: var(--muted); font-size: 16px; margin-bottom: 14px; }
 .price { font-size: 40px; font-weight: 800; color: var(--gold); margin: 10px 0 14px; }
 .trust { display: flex; flex-wrap: wrap; gap: 12px; color: var(--gold2); font-size: 13px; margin-top: 12px; }
-.cta-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.cta-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.link-quiet { color: var(--gold); font-weight: 650; font-size: 14px; text-decoration: none; }
 .kicker { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
 .switch { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0 6px; }
 .switch button {
@@ -97,6 +98,8 @@ body.dc .main-photo { height: 320px; }
 .poe-mini summary { cursor: pointer; color: var(--gold); font-weight: 650; }
 section { padding: 36px 0; }
 h2 { font-size: clamp(22px, 3vw, 32px); margin: 6px 0 14px; }
+.story-intro { color: var(--muted); margin: -6px 0 18px; font-size: 15px; }
+.story-group { color: var(--gold); font-size: 16px; margin: 22px 0 10px; }
 .story { display: flex; flex-direction: column; gap: 18px; }
 .story-row {
   display: grid; grid-template-columns: .9fr 1.1fr; gap: 0;
@@ -120,11 +123,6 @@ h2 { font-size: clamp(22px, 3vw, 32px); margin: 6px 0 14px; }
 table { width: 100%; border-collapse: collapse; margin-top: 8px; }
 th, td { text-align: left; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
 th { color: var(--muted); width: 48%; font-weight: 500; }
-.scheme-frame {
-  margin-top: 8px; background: var(--card); border: 1px solid var(--border);
-  border-radius: 18px; padding: 8px; overflow: hidden;
-}
-.scheme-frame img { display: block; width: 100%; max-height: 380px; object-fit: contain; margin: 0 auto; }
 .reviews { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
 .rev { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px; }
 .stars { color: var(--gold); margin-bottom: 8px; }
@@ -163,7 +161,10 @@ footer { padding: 28px 0 96px; color: var(--muted); font-size: 14px; border-top:
   body.kit20 .main-photo, body.dc .main-photo { height: 220px; }
   .hero-copy h1 { font-size: 26px; }
   .price { font-size: 32px; }
+  .cta-row { flex-direction: column; align-items: stretch; }
   .cta-row .btn { width: 100%; }
+  .link-quiet { text-align: center; padding: 4px 0 2px; }
+  .facts { flex-direction: column; gap: 10px; }
   section { padding: 28px 0; }
   .story-pic { height: 200px; }
   .story-pic img { max-height: 200px; }
