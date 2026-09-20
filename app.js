@@ -3,8 +3,8 @@ const PHOTOS = {
   dc: ["dc-3.jpg","dc-1.jpg","dc-2.jpg","dc-4.jpg"]
 };
 const POS = {
-  "kit20-ports.jpg": "center 60%",
-  "kit20-mah.jpg": "center 70%",
+  "kit20-ports.jpg": "center 55%",
+  "kit20-mah.jpg": "center 65%",
   "kit20-cable.jpg": "center center",
   "dc-1.jpg": "center 40%",
   "dc-2.jpg": "center 45%",
@@ -35,6 +35,9 @@ function renderThumbs() {
   applyPos(main, PHOTOS[current][0]);
   document.body.classList.remove("kit20","dc");
   document.body.classList.add(current);
+  document.querySelectorAll("[data-kit]").forEach(el => {
+    el.hidden = el.getAttribute("data-kit") !== current;
+  });
 }
 function setPhoto(src, el) {
   const main = document.getElementById("mainImg");
@@ -47,9 +50,12 @@ function selectProduct(id) {
   current = id;
   document.getElementById("sw20").classList.toggle("on", id === "kit20");
   document.getElementById("swDc").classList.toggle("on", id === "dc");
-  document.getElementById("orderProduct").selectedIndex = id === "dc" ? 1 : 0;
-  document.getElementById("orderImg").src = PHOTOS[id][0];
-  document.getElementById("orderTitle").textContent = id === "dc" ? "DC1018P · 10 400 mAh" : "Комплект 20 000 mAh";
+  const sel = document.getElementById("orderProduct");
+  if (sel) sel.selectedIndex = id === "dc" ? 1 : 0;
+  const oi = document.getElementById("orderImg");
+  if (oi) oi.src = PHOTOS[id][0];
+  const ot = document.getElementById("orderTitle");
+  if (ot) ot.textContent = id === "dc" ? "DC1018P · 10 400 mAh" : "Комплект 20 000 mAh";
   renderThumbs();
 }
 function syncFromSelect() {
