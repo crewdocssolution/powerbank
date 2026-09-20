@@ -1,6 +1,6 @@
 const PHOTOS = {
   kit20: ["kit20-ports.jpg","kit20-mah.jpg","kit20-cable.jpg"],
-  dc: ["dc-2.jpg","dc-1.jpg","dc-3.jpg","dc-4.jpg","dc-5.jpg"]
+  dc: ["dc-3.jpg","dc-1.jpg","dc-2.jpg","dc-4.jpg"]
 };
 const POS = {
   "kit20-ports.jpg": "center 60%",
@@ -9,8 +9,7 @@ const POS = {
   "dc-1.jpg": "center 40%",
   "dc-2.jpg": "center 45%",
   "dc-3.jpg": "center center",
-  "dc-4.jpg": "center center",
-  "dc-5.jpg": "center 60%"
+  "dc-4.jpg": "center center"
 };
 let current = "kit20";
 
