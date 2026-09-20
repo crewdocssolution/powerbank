@@ -1,8 +1,10 @@
 const PHOTOS = {
-  kit20: ["scheme-20k.jpg","kit20-ports.jpg","kit20-mah.jpg","kit20-cable.jpg"],
+  kit20: ["kit-20k.jpg","kit20-1.jpg","kit20-ports.jpg","kit20-mah.jpg","kit20-cable.jpg","scheme-20k.jpg"],
   dc: ["dc-3.jpg","dc-1.jpg","dc-2.jpg","dc-4.jpg"]
 };
 const POS = {
+  "kit-20k.jpg": "center 60%",
+  "kit20-1.jpg": "center center",
   "scheme-20k.jpg": "center center",
   "kit20-ports.jpg": "center 55%",
   "kit20-mah.jpg": "center 65%",
@@ -54,7 +56,34 @@ function selectProduct(id) {
   if (oi) oi.src = PHOTOS[id][0];
   const ot = document.getElementById("orderTitle");
   if (ot) ot.textContent = id === "dc" ? "DC1018P · 10 400 mAh" : "Комплект 20 000 mAh";
-  renderThumbs();
+  
+function pickPlug(kind) {
+  ["plug","patch","unknown"].forEach(k => {
+    const el = document.getElementById("q-"+k);
+    if (el) el.classList.toggle("on", k === kind);
+  });
+  const rec = document.getElementById("quizRec");
+  const uk = document.documentElement.lang !== "ru";
+  if (!rec) return;
+  rec.hidden = false;
+  if (kind === "patch") {
+    selectProduct("dc");
+    rec.textContent = uk
+      ? "Беріть тільки B. У варіанта A немає PoE — патч-корд він не нагодує."
+      : "Берите только B. У варианта A нет PoE — патч-корд он не накормит.";
+  } else if (kind === "plug") {
+    selectProduct("kit20");
+    rec.textContent = uk
+      ? "Вам підходить A. Тримає довше. B теж зійде, якщо хочете один ящик."
+      : "Вам подходит A. Держит дольше. B тоже сойдёт, если хотите один ящик.";
+  } else {
+    rec.textContent = uk
+      ? "Напишіть модель у коментарі. Якщо сумнів — безпечніше B."
+      : "Напишите модель в комментарии. Если сомнение — безопаснее B.";
+  }
+}
+
+renderThumbs();
 }
 function syncFromSelect() {
   selectProduct(document.getElementById("orderProduct").selectedOptions[0].dataset.id);
@@ -88,4 +117,31 @@ function sendOrder(e) {
   .finally(() => { btn.disabled = false; btn.style.opacity = "1"; });
   return false;
 }
+
+function pickPlug(kind) {
+  ["plug","patch","unknown"].forEach(k => {
+    const el = document.getElementById("q-"+k);
+    if (el) el.classList.toggle("on", k === kind);
+  });
+  const rec = document.getElementById("quizRec");
+  const uk = document.documentElement.lang !== "ru";
+  if (!rec) return;
+  rec.hidden = false;
+  if (kind === "patch") {
+    selectProduct("dc");
+    rec.textContent = uk
+      ? "Беріть тільки B. У варіанта A немає PoE — патч-корд він не нагодує."
+      : "Берите только B. У варианта A нет PoE — патч-корд он не накормит.";
+  } else if (kind === "plug") {
+    selectProduct("kit20");
+    rec.textContent = uk
+      ? "Вам підходить A. Тримає довше. B теж зійде, якщо хочете один ящик."
+      : "Вам подходит A. Держит дольше. B тоже сойдёт, если хотите один ящик.";
+  } else {
+    rec.textContent = uk
+      ? "Напишіть модель у коментарі. Якщо сумнів — безпечніше B."
+      : "Напишите модель в комментарии. Если сомнение — безопаснее B.";
+  }
+}
+
 renderThumbs();

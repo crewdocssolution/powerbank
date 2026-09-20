@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ваш-домен.com.ua/sitemap.xml
+Sitemap: https://crewdocssolution.github.io/powerbank/sitemap.xml
